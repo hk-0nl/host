@@ -3,8 +3,8 @@
   "description": "Local Mangayomi-style repository scaffold for anime and novel sources.",
   "manifestVersion": 1,
   "pluginLists": [
-    "https://raw.githubusercontent.com/hk-0nl/host/main/hosting/dist/hosting/dist/mangayomi/anime_index.json",
-    "https://raw.githubusercontent.com/hk-0nl/host/main/hosting/dist/hosting/dist/mangayomi/manga_index.json",
-    "https://raw.githubusercontent.com/hk-0nl/host/main/hosting/dist/hosting/dist/mangayomi/novel_index.json"
+    "https://raw.githubusercontent.com/hk-0nl/host/main/hosting/dist/mangayomi/anime_index.json",
+    "https://raw.githubusercontent.com/hk-0nl/host/main/hosting/dist/mangayomi/manga_index.json",
+    "https://raw.githubusercontent.com/hk-0nl/host/main/hosting/dist/mangayomi/novel_index.json"
   ]
 }
