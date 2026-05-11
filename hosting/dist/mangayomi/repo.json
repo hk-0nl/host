@@ -1,0 +1,10 @@
+{
+  "name": "hk-0nl repo",
+  "description": "Unified, hardened, and anonymized media distribution endpoint for the hk-0nl ecosystem.",
+  "manifestVersion": 1,
+  "pluginLists": [
+    "https://raw.githubusercontent.com/hk-0nl/host/main/hosting/dist/mangayomi/anime_index.json",
+    "https://raw.githubusercontent.com/hk-0nl/host/main/hosting/dist/mangayomi/manga_index.json",
+    "https://raw.githubusercontent.com/hk-0nl/host/main/hosting/dist/mangayomi/novel_index.json"
+  ]
+}
