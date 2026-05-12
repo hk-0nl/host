@@ -224,7 +224,8 @@ class Rule34Video extends MProvider {
   Future<String> fetchRoute(String url, String context) async {
     final uri = Uri.parse(url);
     try {
-      final response = await client.get(uri, headers: buildHeaders());
+      final response = await _safeGet(uri, headers: buildHeaders());
+      if (response == null) return "";
       final body = response.body;
       if (body.trim().isEmpty) {
         fail("$context returned an empty response", url: url);
@@ -722,6 +723,17 @@ class Rule34Video extends MProvider {
 
   static const String defaultUserAgent =
       "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36";
+
+  Future<Response?> _safeGet(Uri url, {Map<String, String>? headers}) async {
+    try {
+      final res = await client.get(url, headers: headers ?? {});
+      if (res.statusCode >= 400) return null;
+      return res;
+    } catch (e) {
+      return null;
+    }
+  }
+
 }
 
 Rule34Video main(MSource source) {

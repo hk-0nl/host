@@ -10,19 +10,19 @@ class X1337x extends MProvider {
 
   @override
   Future getPopular(int page) async {
-    final res = (await client.get(
+    final res = (await _safeGet(
       Uri.parse(buildCategorySearchUrl("anime", page)),
       headers: {"Connection": "close"},
-    )).body;
+    ))?.body ?? "";
     return parseResults(res);
   }
 
   @override
   Future getLatestUpdates(int page) async {
-    final res = (await client.get(
+    final res = (await _safeGet(
       Uri.parse(buildCategorySearchUrl("anime", page)),
       headers: {"Connection": "close"},
-    )).body;
+    ))?.body ?? "";
     return parseResults(res);
   }
 
@@ -33,10 +33,10 @@ class X1337x extends MProvider {
       return getLatestUpdates(page);
     }
 
-    final res = (await client.get(
+    final res = (await _safeGet(
       Uri.parse(buildCategorySearchUrl(trimmedQuery, page)),
       headers: {"Connection": "close"},
-    )).body;
+    ))?.body ?? "";
     return parseResults(res);
   }
 
@@ -45,10 +45,10 @@ class X1337x extends MProvider {
     final detailUrl = stripFragment(normalizeUrl(url));
     final anime = MManga();
     final embedded = readEmbedded(url);
-    final res = (await client.get(
+    final res = (await _safeGet(
       Uri.parse(detailUrl),
       headers: {"Connection": "close"},
-    )).body;
+    ))?.body ?? "";
     final document = parseHtml(res);
 
     anime.name =
@@ -253,6 +253,17 @@ class X1337x extends MProvider {
       ),
     ];
   }
+
+  Future<Response?> _safeGet(Uri url, {Map<String, String>? headers}) async {
+    try {
+      final res = await client.get(url, headers: headers ?? {});
+      if (res.statusCode >= 400) return null;
+      return res;
+    } catch (e) {
+      return null;
+    }
+  }
+
 }
 
 X1337x main(MSource source) {

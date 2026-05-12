@@ -9,7 +9,8 @@ class ScribbleHub extends MProvider {
 
   @override
   Future<MPages> getPopular(int page) async {
-    final res = await client.get(
+    final res = await _safeGet(
+    if (res == null) return MPages([], false);
       Uri.parse("${source.baseUrl}/series-ranking/?sort=1&order=1&pg=$page"),
     );
     return _parseList(res.body);
@@ -17,7 +18,8 @@ class ScribbleHub extends MProvider {
 
   @override
   Future<MPages> getLatestUpdates(int page) async {
-    final res = await client.get(
+    final res = await _safeGet(
+    if (res == null) return MPages([], false);
       Uri.parse("${source.baseUrl}/latest-series/?pg=$page"),
     );
     return _parseList(res.body);
@@ -32,7 +34,8 @@ class ScribbleHub extends MProvider {
     final pagedUrl = page > 1
         ? "${source.baseUrl}/page/$page/?s=${Uri.encodeQueryComponent(query)}&post_type=fictionposts"
         : url;
-    final res = await client.get(Uri.parse(pagedUrl));
+    final res = await _safeGet(Uri.parse(pagedUrl));
+    if (res == null) return MPages([], false);
     return _parseList(res.body);
   }
 
@@ -63,7 +66,8 @@ class ScribbleHub extends MProvider {
 
   @override
   Future<MManga> getDetail(String url) async {
-    final res = await client.get(Uri.parse(url));
+    final res = await _safeGet(Uri.parse(url));
+    if (res == null) return MManga();
     final document = parseHtml(res.body);
 
     final manga = MManga();
@@ -97,7 +101,8 @@ class ScribbleHub extends MProvider {
     int page = 1;
 
     while (true) {
-      final res = await client.post(
+      final res = await _safePost(
+      if (res == null) return MManga();
         Uri.parse("${source.baseUrl}/wp-admin/admin-ajax.php"),
         headers: {"Content-Type": "application/x-www-form-urlencoded"},
         body: "action=wi_getreleases_pagination&pagenum=$page&mypostid=$postId",
@@ -133,7 +138,8 @@ class ScribbleHub extends MProvider {
 
   @override
   Future<List<dynamic>> getPageList(String url) async {
-    final res = await client.get(Uri.parse(url));
+    final res = await _safeGet(Uri.parse(url));
+    if (res == null) return MManga();
     final document = parseHtml(res.body);
 
     final content = document.selectFirst("div#chp_raw");
@@ -158,6 +164,27 @@ class ScribbleHub extends MProvider {
 
   @override
   List<dynamic> getSourcePreferences() => [];
+
+  Future<Response?> _safeGet(Uri url, {Map<String, String>? headers}) async {
+    try {
+      final res = await client.get(url, headers: headers ?? {});
+      if (res.statusCode >= 400) return null;
+      return res;
+    } catch (e) {
+      return null;
+    }
+  }
+
+  Future<Response?> _safePost(Uri url, {Map<String, String>? headers, Object? body}) async {
+    try {
+      final res = await client.post(url, headers: headers ?? {}, body: body);
+      if (res.statusCode >= 400) return null;
+      return res;
+    } catch (e) {
+      return null;
+    }
+  }
+
 }
 
 ScribbleHub main(MSource source) => ScribbleHub(source: source);

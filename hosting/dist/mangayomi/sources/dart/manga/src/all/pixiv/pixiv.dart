@@ -74,7 +74,8 @@ class Pixiv extends MProvider {
     if (token == null) {
       return MPages([], false);
     }
-    final res = await client.get(
+    final res = await _safeGet(
+    if (res == null) return MPages([], false);
       Uri.parse('$_apiBase/v1/illust/ranking?mode=day&filter=for_ios'),
       headers: _appHeaders(token),
     );
@@ -87,7 +88,8 @@ class Pixiv extends MProvider {
     if (token == null) {
       return MPages([], false);
     }
-    final res = await client.get(
+    final res = await _safeGet(
+    if (res == null) return MPages([], false);
       Uri.parse('$_apiBase/v1/illust/new?content_type=illust&filter=for_ios'),
       headers: _appHeaders(token),
     );
@@ -118,7 +120,8 @@ class Pixiv extends MProvider {
       '&sort=$sortMode'
       '&filter=for_ios',
     );
-    final res = await client.get(uri, headers: _appHeaders(token));
+    final res = await _safeGet(uri, headers: _appHeaders(token));
+    if (res == null) return MPages([], false);
     return _parseIllustList(res.body);
   }
 
@@ -135,7 +138,8 @@ class Pixiv extends MProvider {
       );
     }
 
-    final res = await client.get(
+    final res = await _safeGet(
+    if (res == null) return MManga();
       Uri.parse('$_apiBase/v1/illust/detail?illust_id=$illustId'),
       headers: _appHeaders(token),
     );
@@ -176,7 +180,8 @@ class Pixiv extends MProvider {
       );
     }
 
-    final res = await client.get(
+    final res = await _safeGet(
+    if (res == null) return MManga();
       Uri.parse('$_apiBase/v1/illust/detail?illust_id=$illustId'),
       headers: _appHeaders(token),
     );
@@ -266,7 +271,8 @@ class Pixiv extends MProvider {
   }
 
   Future<String> _refreshAccessToken(String refreshToken) async {
-    final res = await client.post(
+    final res = await _safePost(
+    if (res == null) return "";
       Uri.parse(_authUrl),
       headers: {
         'User-Agent': _userAgent,
@@ -333,6 +339,27 @@ class Pixiv extends MProvider {
         RegExp(r'illust_id=(\d+)').firstMatch(url)?.group(1) ??
         '';
   }
+
+  Future<Response?> _safeGet(Uri url, {Map<String, String>? headers}) async {
+    try {
+      final res = await client.get(url, headers: headers ?? {});
+      if (res.statusCode >= 400) return null;
+      return res;
+    } catch (e) {
+      return null;
+    }
+  }
+
+  Future<Response?> _safePost(Uri url, {Map<String, String>? headers, Object? body}) async {
+    try {
+      final res = await client.post(url, headers: headers ?? {}, body: body);
+      if (res.statusCode >= 400) return null;
+      return res;
+    } catch (e) {
+      return null;
+    }
+  }
+
 }
 
 Pixiv main(MSource source) {

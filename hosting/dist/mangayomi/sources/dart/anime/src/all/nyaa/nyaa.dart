@@ -241,10 +241,10 @@ class Nyaa extends MProvider {
 
   Future<String> fetchText(Uri uri, String context) async {
     try {
-      final body = (await client.get(
+      final body = (await _safeGet(
         uri,
         headers: {"Connection": "close"},
-      )).body;
+      ))?.body ?? "";
       if (body.trim().isEmpty) {
         fail("$context returned an empty response", url: uri.toString());
       }
@@ -341,6 +341,17 @@ class Nyaa extends MProvider {
       ),
     ];
   }
+
+  Future<Response?> _safeGet(Uri url, {Map<String, String>? headers}) async {
+    try {
+      final res = await client.get(url, headers: headers ?? {});
+      if (res.statusCode >= 400) return null;
+      return res;
+    } catch (e) {
+      return null;
+    }
+  }
+
 }
 
 Nyaa main(MSource source) {

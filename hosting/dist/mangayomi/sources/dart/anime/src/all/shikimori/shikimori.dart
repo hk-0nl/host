@@ -361,10 +361,10 @@ class Shikimori extends MProvider {
 
   Future<String> fetchText(Uri uri, String context) async {
     try {
-      final body = (await client.get(uri, headers: {
+      final body = (await _safeGet(uri, headers: {
         "User-Agent": "Mangayomi-Shikimori-Source",
         "Connection": "close",
-      })).body;
+      }))?.body ?? "";
       if (body.trim().isEmpty) {
         // Concatenation — dart_eval does not support "$context returned..." interpolation
         fail(context + " returned an empty response", url: uri.toString());
@@ -504,6 +504,17 @@ class Shikimori extends MProvider {
       ),
     ];
   }
+
+  Future<Response?> _safeGet(Uri url, {Map<String, String>? headers}) async {
+    try {
+      final res = await client.get(url, headers: headers ?? {});
+      if (res.statusCode >= 400) return null;
+      return res;
+    } catch (e) {
+      return null;
+    }
+  }
+
 }
 
 Shikimori main(MSource source) => Shikimori(source: source);

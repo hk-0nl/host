@@ -163,7 +163,8 @@ class Rule34 extends MProvider {
           "&user_id=${Uri.encodeQueryComponent(userId)}&api_key=${Uri.encodeQueryComponent(apiKey)}";
     }
     final uri = Uri.parse("${_apiBase()}/index.php?$params");
-    final res = await client.get(uri, headers: _headers());
+    final res = await _safeGet(uri, headers: _headers());
+    if (res == null) return MPages([], false);
     final posts = _decodePostList(res.body);
 
     final items = <MManga>[];
@@ -196,7 +197,8 @@ class Rule34 extends MProvider {
           "&user_id=${Uri.encodeQueryComponent(userId)}&api_key=${Uri.encodeQueryComponent(apiKey)}";
     }
     final uri = Uri.parse("${_apiBase()}/index.php?$params");
-    final res = await client.get(uri, headers: _headers());
+    final res = await _safeGet(uri, headers: _headers());
+    if (res == null) return MPages([], false);
     final posts = _decodePostList(res.body);
     if (posts.isEmpty) return {};
     return _asMap(posts.first);
@@ -348,6 +350,17 @@ class Rule34 extends MProvider {
       ),
     ];
   }
+
+  Future<Response?> _safeGet(Uri url, {Map<String, String>? headers}) async {
+    try {
+      final res = await client.get(url, headers: headers ?? {});
+      if (res.statusCode >= 400) return null;
+      return res;
+    } catch (e) {
+      return null;
+    }
+  }
+
 }
 
 Rule34 main(MSource source) => Rule34(source: source);

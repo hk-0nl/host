@@ -33,7 +33,8 @@ class NHentai extends MProvider {
   }
 
   Future<String> _fetchJson(Uri uri) async {
-    final res = await client.get(uri, headers: {"Connection": "close"});
+    final res = await _safeGet(uri, headers: {"Connection": "close"});
+    if (res == null) return "";
     final bypassEnabled = getPreferenceValue(source.id, "enable_cf_bypass");
 
     if (bypassEnabled == true &&
@@ -205,6 +206,17 @@ class NHentai extends MProvider {
       ),
     ];
   }
+
+  Future<Response?> _safeGet(Uri url, {Map<String, String>? headers}) async {
+    try {
+      final res = await client.get(url, headers: headers ?? {});
+      if (res.statusCode >= 400) return null;
+      return res;
+    } catch (e) {
+      return null;
+    }
+  }
+
 }
 
 NHentai main(MSource source) => NHentai(source: source);

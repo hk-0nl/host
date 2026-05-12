@@ -150,7 +150,8 @@ class HanimeTv extends MProvider {
       "tags_mode": "AND",
     };
 
-    final res = await client.post(
+    final res = await _safePost(
+    if (res == null) return MPages([], false);
       Uri.parse(searchApiUrl),
       headers: {"Content-Type": "application/json", "Connection": "close"},
       body: jsonEncode(body),
@@ -190,7 +191,8 @@ class HanimeTv extends MProvider {
     final uri = Uri.parse(
       buildUrlWithQuery(getBaseUrl() + "/api/v8/video", {"id": slug}),
     );
-    final res = await client.get(uri, headers: buildApiHeaders());
+    final res = await _safeGet(uri, headers: buildApiHeaders());
+    if (res == null) return MPages([], false);
     final decoded = jsonDecode(res.body);
     if (decoded is Map<String, dynamic>) {
       return decoded;
@@ -421,6 +423,27 @@ class HanimeTv extends MProvider {
       ),
     ];
   }
+
+  Future<Response?> _safeGet(Uri url, {Map<String, String>? headers}) async {
+    try {
+      final res = await client.get(url, headers: headers ?? {});
+      if (res.statusCode >= 400) return null;
+      return res;
+    } catch (e) {
+      return null;
+    }
+  }
+
+  Future<Response?> _safePost(Uri url, {Map<String, String>? headers, Object? body}) async {
+    try {
+      final res = await client.post(url, headers: headers ?? {}, body: body);
+      if (res.statusCode >= 400) return null;
+      return res;
+    } catch (e) {
+      return null;
+    }
+  }
+
 }
 
 HanimeTv main(MSource source) {

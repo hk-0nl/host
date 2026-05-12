@@ -28,7 +28,8 @@ class MultiBooru extends MProvider {
     // For now, assume url passes enough data or it's a direct API query to /posts/<id>.json
     // But since `mangaFromPartial` sets the `url` to the JSON payload representing the post ID or API endpoint,
     // we do an API fetch.
-    final res = await client.get(Uri.parse(url), headers: _getHeaders());
+    final res = await _safeGet(Uri.parse(url), headers: _getHeaders());
+    if (res == null) return MManga();
     final payload = jsonDecode(res.body);
 
     // Some APIs return array for single searches (like Gelbooru id search)
@@ -140,7 +141,8 @@ class MultiBooru extends MProvider {
 
     final uri = _buildListUri(isDanbooru: isDan, tags: _allTags, page: page);
 
-    final res = await client.get(uri, headers: _getHeaders());
+    final res = await _safeGet(uri, headers: _getHeaders());
+    if (res == null) return MPages([], false);
     final payload = jsonDecode(res.body);
 
     List<dynamic> posts = [];
@@ -501,6 +503,17 @@ class _BooruPost {
   String previewUrl = "";
   String fileUrl = "";
   String fileExt = "";
+
+  Future<Response?> _safeGet(Uri url, {Map<String, String>? headers}) async {
+    try {
+      final res = await client.get(url, headers: headers ?? {});
+      if (res.statusCode >= 400) return null;
+      return res;
+    } catch (e) {
+      return null;
+    }
+  }
+
 }
 
 MultiBooru main(MSource source) {

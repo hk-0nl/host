@@ -78,7 +78,8 @@ class AnnasArchive extends MProvider {
       url = url + "&ext=" + fileType;
     }
 
-    final res = await client.get(Uri.parse(url), headers: _headers);
+    final res = await _safeGet(Uri.parse(url), headers: _headers);
+    if (res == null) return MPages([], false);
     final document = parseHtml(res.body);
 
     // Each search result has an anchor with class js-vim-focus
@@ -111,7 +112,8 @@ class AnnasArchive extends MProvider {
 
   @override
   Future<MManga> getDetail(String url) async {
-    final res = await client.get(Uri.parse(url), headers: _headers);
+    final res = await _safeGet(Uri.parse(url), headers: _headers);
+    if (res == null) return MManga();
     final document = parseHtml(res.body);
 
     final book = MManga()..link = url;
@@ -212,6 +214,17 @@ class AnnasArchive extends MProvider {
 
   @override
   List<dynamic> getSourcePreferences() => [];
+
+  Future<Response?> _safeGet(Uri url, {Map<String, String>? headers}) async {
+    try {
+      final res = await client.get(url, headers: headers ?? {});
+      if (res.statusCode >= 400) return null;
+      return res;
+    } catch (e) {
+      return null;
+    }
+  }
+
 }
 
 AnnasArchive main(MSource source) => AnnasArchive(source: source);

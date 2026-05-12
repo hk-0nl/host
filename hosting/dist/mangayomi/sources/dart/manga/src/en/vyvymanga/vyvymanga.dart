@@ -11,13 +11,13 @@ import 'package:mangayomi/bridge_lib.dart';
 // VyvyManga serves a lightweight Cloudflare challenge on the first cold
 // request from a new IP, but does NOT use JS rendering for content pages
 // (the HTML is server-side rendered). This means:
-//   • Browse, search, detail, chapter-list pages: plain client.get() works
+//   • Browse, search, detail, chapter-list pages: plain _safeGet() works
 //     once the CF cookie is satisfied via WebView (see note below).
 //   • Image pages (reader): images are served directly from a CDN with a
 //     Referer check. The "headers" map in getPageList() handles this.
 //
 // CF bypass strategy:
-//   If client.get() receives an HTML page containing the CF challenge JS
+//   If _safeGet() receives an HTML page containing the CF challenge JS
 //   rather than the expected manga listing, fall back to
 //   evaluateJavascriptViaWebview() to let the in-app WebView solve the
 //   challenge, capture the cookies, and return the rendered HTML.
@@ -245,7 +245,8 @@ class VyvyManga extends MProvider {
       if (idMatch != null) {
         final mangaId = idMatch.group(1)!;
         final ajaxUrl = "${_base()}/wp-admin/admin-ajax.php";
-        final res = await client.post(
+        final res = await _safePost(
+        if (res == null) return "";
           Uri.parse(ajaxUrl),
           headers: {
             "Content-Type": "application/x-www-form-urlencoded",
@@ -361,7 +362,8 @@ class VyvyManga extends MProvider {
   /// evaluateJavascriptViaWebview() to solve it in the embedded browser.
   Future<String> _fetchWithCfFallback(String url) async {
     try {
-      final res = await client.get(Uri.parse(url), headers: _headers());
+      final res = await _safeGet(Uri.parse(url), headers: _headers());
+      if (res == null) return "";
       if (_isCfChallenge(res.body)) {
         // Let the in-app WebView handle the challenge.
         // The JS evaluates the CF challenge, sets cookies, and returns the
@@ -451,6 +453,27 @@ class VyvyManga extends MProvider {
       ),
     ];
   }
+
+  Future<Response?> _safeGet(Uri url, {Map<String, String>? headers}) async {
+    try {
+      final res = await client.get(url, headers: headers ?? {});
+      if (res.statusCode >= 400) return null;
+      return res;
+    } catch (e) {
+      return null;
+    }
+  }
+
+  Future<Response?> _safePost(Uri url, {Map<String, String>? headers, Object? body}) async {
+    try {
+      final res = await client.post(url, headers: headers ?? {}, body: body);
+      if (res.statusCode >= 400) return null;
+      return res;
+    } catch (e) {
+      return null;
+    }
+  }
+
 }
 
 VyvyManga main(MSource source) => VyvyManga(source: source);

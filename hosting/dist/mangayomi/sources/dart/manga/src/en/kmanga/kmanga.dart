@@ -49,14 +49,16 @@ class Kmanga extends MProvider {
   @override
   Future<MPages> getPopular(int page) async {
     final url = "${_base()}/manga/?m_orderby=trending&page=$page";
-    final res = await client.get(Uri.parse(url), headers: _headers());
+    final res = await _safeGet(Uri.parse(url), headers: _headers());
+    if (res == null) return MPages([], false);
     return _parseListing(res.body);
   }
 
   @override
   Future<MPages> getLatestUpdates(int page) async {
     final url = "${_base()}/manga/?m_orderby=latest&page=$page";
-    final res = await client.get(Uri.parse(url), headers: _headers());
+    final res = await _safeGet(Uri.parse(url), headers: _headers());
+    if (res == null) return MPages([], false);
     return _parseListing(res.body);
   }
 
@@ -91,7 +93,8 @@ class Kmanga extends MProvider {
     if (statusTag.isNotEmpty) url += "&status[]=$statusTag";
     if (sortTag.isNotEmpty) url += "&m_orderby=$sortTag";
 
-    final res = await client.get(Uri.parse(url), headers: _headers());
+    final res = await _safeGet(Uri.parse(url), headers: _headers());
+    if (res == null) return MPages([], false);
     return _parseListing(res.body);
   }
 
@@ -99,7 +102,8 @@ class Kmanga extends MProvider {
 
   @override
   Future<MManga> getDetail(String url) async {
-    final res = await client.get(Uri.parse(url), headers: _headers());
+    final res = await _safeGet(Uri.parse(url), headers: _headers());
+    if (res == null) return MManga();
     final document = parseHtml(res.body);
     final manga = MManga();
 
@@ -170,7 +174,8 @@ class Kmanga extends MProvider {
   // Returns headers map to satisfy the CDN Referer check.
   @override
   Future<List<dynamic>> getPageList(String url) async {
-    final res = await client.get(Uri.parse(url), headers: _chapterHeaders(url));
+    final res = await _safeGet(Uri.parse(url), headers: _chapterHeaders(url));
+    if (res == null) return MManga();
     final document = parseHtml(res.body);
 
     // Primary: div.page-break img[data-src] (Madara lazy-load pattern)
@@ -260,7 +265,8 @@ class Kmanga extends MProvider {
     if (idMatch != null) {
       final mangaId = idMatch.group(1)!;
       try {
-        final ajaxRes = await client.post(
+        final ajaxRes = await _safePost(
+        if (ajaxRes == null) return MManga();
           Uri.parse("${_base()}/wp-admin/admin-ajax.php"),
           headers: {
             "Content-Type": "application/x-www-form-urlencoded",
@@ -409,6 +415,27 @@ class Kmanga extends MProvider {
       ),
     ];
   }
+
+  Future<Response?> _safeGet(Uri url, {Map<String, String>? headers}) async {
+    try {
+      final res = await client.get(url, headers: headers ?? {});
+      if (res.statusCode >= 400) return null;
+      return res;
+    } catch (e) {
+      return null;
+    }
+  }
+
+  Future<Response?> _safePost(Uri url, {Map<String, String>? headers, Object? body}) async {
+    try {
+      final res = await client.post(url, headers: headers ?? {}, body: body);
+      if (res.statusCode >= 400) return null;
+      return res;
+    } catch (e) {
+      return null;
+    }
+  }
+
 }
 
 Kmanga main(MSource source) => Kmanga(source: source);

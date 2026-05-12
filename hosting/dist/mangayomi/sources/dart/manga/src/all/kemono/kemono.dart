@@ -465,7 +465,8 @@ class Kemono extends MProvider {
     try {
       // Fast path: try standard HTTP client. Mangayomi's client shares cookies
       // with the WebView, so if CF was already solved, this works instantly.
-      final res = await client.get(uri, headers: buildHeaders());
+      final res = await _safeGet(uri, headers: buildHeaders());
+      if (res == null) return "";
       if (res.statusCode == 200) {
         final text = res.body.trim();
         // If it starts with [ or {, it's valid JSON from the API.
@@ -658,6 +659,17 @@ class _ChapterKey {
   final String postId;
   final int offset;
   final int limit;
+
+  Future<Response?> _safeGet(Uri url, {Map<String, String>? headers}) async {
+    try {
+      final res = await client.get(url, headers: headers ?? {});
+      if (res.statusCode >= 400) return null;
+      return res;
+    } catch (e) {
+      return null;
+    }
+  }
+
 }
 
 Kemono main(MSource source) => Kemono(source: source);

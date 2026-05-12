@@ -95,7 +95,8 @@ class Viz extends MProvider {
     // Try the JSON API first
     Map<String, dynamic>? apiData;
     try {
-      final apiRes = await client.get(
+      final apiRes = await _safeGet(
+      if (apiRes == null) return MManga();
         Uri.parse("${_base()}/api/series/$slug"),
         headers: _jsonHeaders(),
       );
@@ -114,7 +115,8 @@ class Viz extends MProvider {
       manga.chapters = _parseApiChapters(apiData["chapters"], url);
     } else {
       // Fallback: scrape the HTML series page
-      final html = await client.get(Uri.parse(url), headers: _htmlHeaders());
+      final html = await _safeGet(Uri.parse(url), headers: _htmlHeaders());
+      if (html == null) return MManga();
       final document = parseHtml(html.body);
 
       manga.name =
@@ -160,7 +162,8 @@ class Viz extends MProvider {
     }
 
     // Step 1: Request viewer token for this chapter
-    final tokenRes = await client.get(
+    final tokenRes = await _safeGet(
+    if (tokenRes == null) return MManga();
       Uri.parse(
         "${_base()}/manga/get_manga_url.php?device_id=3&manga_id=$chapterId",
       ),
@@ -195,7 +198,8 @@ class Viz extends MProvider {
     }
 
     // Step 2: Fetch the viewer manifest JSON from the token URL
-    final manifestRes = await client.get(
+    final manifestRes = await _safeGet(
+    if (manifestRes == null) return MManga();
       Uri.parse(viewUrl),
       headers: _htmlHeaders(),
     );
@@ -263,7 +267,8 @@ class Viz extends MProvider {
     if (status.isNotEmpty) apiUrl += "&status=$status";
 
     try {
-      final res = await client.get(Uri.parse(apiUrl), headers: _jsonHeaders());
+      final res = await _safeGet(Uri.parse(apiUrl), headers: _jsonHeaders());
+      if (res == null) return MPages([], false);
       final data = jsonDecode(res.body);
       if (data is Map && data["series"] is List) {
         return _parseApiCatalog(data["series"] as List, page);
@@ -277,7 +282,8 @@ class Viz extends MProvider {
     else
       htmlUrl += "?page=$page";
 
-    final res = await client.get(Uri.parse(htmlUrl), headers: _htmlHeaders());
+    final res = await _safeGet(Uri.parse(htmlUrl), headers: _htmlHeaders());
+    if (res == null) return MPages([], false);
     final document = parseHtml(res.body);
     return _parseHtmlCatalog(document, page);
   }
@@ -474,6 +480,17 @@ class Viz extends MProvider {
       ),
     ];
   }
+
+  Future<Response?> _safeGet(Uri url, {Map<String, String>? headers}) async {
+    try {
+      final res = await client.get(url, headers: headers ?? {});
+      if (res.statusCode >= 400) return null;
+      return res;
+    } catch (e) {
+      return null;
+    }
+  }
+
 }
 
 Viz main(MSource source) => Viz(source: source);

@@ -109,7 +109,8 @@ class MangaDex extends MProvider {
         "/manga/" +
         mangaId +
         "?includes[]=cover_art&includes[]=author&includes[]=artist";
-    final res = await client.get(Uri.parse(detailUrl), headers: _headers());
+    final res = await _safeGet(Uri.parse(detailUrl), headers: _headers());
+    if (res == null) return MManga();
     final Map<String, dynamic> body = jsonDecode(res.body) as Map<String, dynamic>;
     final Map<String, dynamic> data = body["data"] as Map<String, dynamic>;
     final Map<String, dynamic> attrs = data["attributes"] as Map<String, dynamic>;
@@ -179,7 +180,8 @@ class MangaDex extends MProvider {
     // url = chapter UUID
     final chapterId = url.startsWith("http") ? _extractId(url) : url;
     final atHomeUrl = _apiBase + "/at-home/server/" + chapterId;
-    final res = await client.get(Uri.parse(atHomeUrl), headers: _headers());
+    final res = await _safeGet(Uri.parse(atHomeUrl), headers: _headers());
+    if (res == null) return MManga();
     final Map<String, dynamic> body = jsonDecode(res.body) as Map<String, dynamic>;
     final String baseUrl = body["baseUrl"]?.toString() ?? "";
     final Map<String, dynamic> chapter = body["chapter"] as Map<String, dynamic>? ?? {};
@@ -218,7 +220,8 @@ class MangaDex extends MProvider {
           "&order[chapter]=asc" +
           "&translatedLanguage[]=en" +
           "&includes[]=scanlation_group";
-      final res = await client.get(Uri.parse(url), headers: _headers());
+      final res = await _safeGet(Uri.parse(url), headers: _headers());
+      if (res == null) return MManga();
       final Map<String, dynamic> body = jsonDecode(res.body) as Map<String, dynamic>;
       total = (body["total"] as num?)?.toInt() ?? 0;
       final List<dynamic> data = body["data"] as List<dynamic>? ?? [];
@@ -282,7 +285,8 @@ class MangaDex extends MProvider {
   // ── Private: manga list ───────────────────────────────────────────────────
 
   Future<MPages> _fetchMangaList(String url) async {
-    final res = await client.get(Uri.parse(url), headers: _headers());
+    final res = await _safeGet(Uri.parse(url), headers: _headers());
+    if (res == null) return MPages([], false);
     final Map<String, dynamic> body = jsonDecode(res.body) as Map<String, dynamic>;
     final List<dynamic> data = body["data"] as List<dynamic>? ?? [];
     final int limit = (body["limit"] as num?)?.toInt() ?? 20;
@@ -390,6 +394,17 @@ class MangaDex extends MProvider {
   List<dynamic> getSourcePreferences() {
     return [];
   }
+
+  Future<Response?> _safeGet(Uri url, {Map<String, String>? headers}) async {
+    try {
+      final res = await client.get(url, headers: headers ?? {});
+      if (res.statusCode >= 400) return null;
+      return res;
+    } catch (e) {
+      return null;
+    }
+  }
+
 }
 
 MangaDex main(MSource source) => MangaDex(source: source);

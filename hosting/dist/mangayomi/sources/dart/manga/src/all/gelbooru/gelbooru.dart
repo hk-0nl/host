@@ -189,7 +189,8 @@ class Gelbooru extends MProvider {
     params += _authParams();
 
     final uri = Uri.parse(_base() + "/index.php?" + params);
-    final res = await client.get(uri, headers: _headers());
+    final res = await _safeGet(uri, headers: _headers());
+    if (res == null) return MPages([], false);
     final posts = _decodePostList(res.body);
 
     final items = <MManga>[];
@@ -218,7 +219,8 @@ class Gelbooru extends MProvider {
         "page=dapi&s=post&q=index&json=1&id=" + Uri.encodeQueryComponent(id);
     params += _authParams();
     final uri = Uri.parse(_base() + "/index.php?" + params);
-    final res = await client.get(uri, headers: _headers());
+    final res = await _safeGet(uri, headers: _headers());
+    if (res == null) return MPages([], false);
     final posts = _decodePostList(res.body);
     if (posts.isEmpty) return {};
     return _asMap(posts.first);
@@ -386,6 +388,17 @@ class Gelbooru extends MProvider {
       ),
     ];
   }
+
+  Future<Response?> _safeGet(Uri url, {Map<String, String>? headers}) async {
+    try {
+      final res = await client.get(url, headers: headers ?? {});
+      if (res.statusCode >= 400) return null;
+      return res;
+    } catch (e) {
+      return null;
+    }
+  }
+
 }
 
 Gelbooru main(MSource source) => Gelbooru(source: source);

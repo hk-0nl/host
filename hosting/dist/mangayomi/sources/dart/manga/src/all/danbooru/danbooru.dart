@@ -243,7 +243,8 @@ class Danbooru extends MProvider {
     params += _authParams();
 
     final uri = Uri.parse(_base() + "/posts.json?" + params);
-    final res = await client.get(uri, headers: _headers());
+    final res = await _safeGet(uri, headers: _headers());
+    if (res == null) return MPages([], false);
 
     // FIX 2b: Detect the silent tag-limit rejection payload
     // { "success": false, "message": "You cannot search for more than N tags..." }
@@ -295,7 +296,8 @@ class Danbooru extends MProvider {
 
   Future<Map<String, dynamic>> _fetchPost(String id) async {
     final uri = Uri.parse(_base() + "/posts/" + id + ".json" + _authQuery());
-    final res = await client.get(uri, headers: _headers());
+    final res = await _safeGet(uri, headers: _headers());
+    if (res == null) return MPages([], false);
     return _asMap(jsonDecode(res.body));
   }
 
@@ -536,6 +538,17 @@ class Danbooru extends MProvider {
       ),
     ];
   }
+
+  Future<Response?> _safeGet(Uri url, {Map<String, String>? headers}) async {
+    try {
+      final res = await client.get(url, headers: headers ?? {});
+      if (res.statusCode >= 400) return null;
+      return res;
+    } catch (e) {
+      return null;
+    }
+  }
+
 }
 
 Danbooru main(MSource source) => Danbooru(source: source);

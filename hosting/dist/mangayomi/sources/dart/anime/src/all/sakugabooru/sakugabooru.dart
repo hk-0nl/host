@@ -244,7 +244,8 @@ class Sakugabooru extends MProvider {
     params += _authParams();
 
     final uri = Uri.parse(_base() + "/post.json?" + params);
-    final res = await client.get(uri, headers: _headers());
+    final res = await _safeGet(uri, headers: _headers());
+    if (res == null) return MPages([], false);
 
     // FIX 2b: Detect the silent tag-limit rejection payload
     // { "success": false, "message": "You cannot search for more than N tags..." }
@@ -299,7 +300,8 @@ class Sakugabooru extends MProvider {
       final uri = Uri.parse(
         _base() + "/post/show/" + id + ".json" + _authQuery(),
       );
-      final res = await client.get(uri, headers: _headers());
+      final res = await _safeGet(uri, headers: _headers());
+      if (res == null) return MPages([], false);
       if (res.statusCode == 200) {
         return _asMap(jsonDecode(res.body));
       }
@@ -307,7 +309,8 @@ class Sakugabooru extends MProvider {
 
     // HTML fallback
     final htmlUri = Uri.parse(_base() + "/post/show/" + id);
-    final resHtml = await client.get(htmlUri, headers: _headers());
+    final resHtml = await _safeGet(htmlUri, headers: _headers());
+    if (resHtml == null) return MPages([], false);
     final document = parseHtml(resHtml.body);
 
     final map = <String, dynamic>{"id": id};
@@ -599,6 +602,17 @@ class Sakugabooru extends MProvider {
       ),
     ];
   }
+
+  Future<Response?> _safeGet(Uri url, {Map<String, String>? headers}) async {
+    try {
+      final res = await client.get(url, headers: headers ?? {});
+      if (res.statusCode >= 400) return null;
+      return res;
+    } catch (e) {
+      return null;
+    }
+  }
+
 }
 
 Sakugabooru main(MSource source) => Sakugabooru(source: source);

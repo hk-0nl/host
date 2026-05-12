@@ -48,7 +48,8 @@ class DynastyScans extends MProvider {
     final uri = Uri.parse(
       "${source.baseUrl}/search?q=${Uri.encodeQueryComponent(trimmed)}&page=$page",
     );
-    final res = await client.get(uri, headers: {"Connection": "close"});
+    final res = await _safeGet(uri, headers: {"Connection": "close"});
+    if (res == null) return MPages([], false);
     return _parseSearchResults(res.body);
   }
 
@@ -62,7 +63,8 @@ class DynastyScans extends MProvider {
       jsonUrl = "$url.json";
     }
 
-    final res = await client.get(
+    final res = await _safeGet(
+    if (res == null) return MManga();
       Uri.parse(jsonUrl),
       headers: {"Connection": "close"},
     );
@@ -142,7 +144,8 @@ class DynastyScans extends MProvider {
       jsonUrl = "$url.json";
     }
 
-    final res = await client.get(
+    final res = await _safeGet(
+    if (res == null) return MManga();
       Uri.parse(jsonUrl),
       headers: {"Connection": "close"},
     );
@@ -258,7 +261,8 @@ class DynastyScans extends MProvider {
   }
 
   Future<List<dynamic>> _fetchJsonList(String path) async {
-    final res = await client.get(
+    final res = await _safeGet(
+    if (res == null) return MManga();
       Uri.parse("${source.baseUrl}$path"),
       headers: {"Connection": "close"},
     );
@@ -277,6 +281,17 @@ class DynastyScans extends MProvider {
 
   @override
   List<dynamic> getSourcePreferences() => [];
+
+  Future<Response?> _safeGet(Uri url, {Map<String, String>? headers}) async {
+    try {
+      final res = await client.get(url, headers: headers ?? {});
+      if (res.statusCode >= 400) return null;
+      return res;
+    } catch (e) {
+      return null;
+    }
+  }
+
 }
 
 DynastyScans main(MSource source) => DynastyScans(source: source);

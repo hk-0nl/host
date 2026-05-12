@@ -301,7 +301,8 @@ class ArchiveOfOurOwn extends MProvider {
     int delaySeconds = 60;
 
     while (true) {
-      final res = await client.get(Uri.parse(url), headers: _headers());
+      final res = await _safeGet(Uri.parse(url), headers: _headers());
+      if (res == null) return "";
       if (res.statusCode != 429) {
         return res.body;
       }
@@ -323,6 +324,17 @@ class ArchiveOfOurOwn extends MProvider {
       }
     }
   }
+
+  Future<Response?> _safeGet(Uri url, {Map<String, String>? headers}) async {
+    try {
+      final res = await client.get(url, headers: headers ?? {});
+      if (res.statusCode >= 400) return null;
+      return res;
+    } catch (e) {
+      return null;
+    }
+  }
+
 }
 
 ArchiveOfOurOwn main(MSource source) => ArchiveOfOurOwn(source: source);
