@@ -1,5 +1,7 @@
 # Sora Modules
 
-Sora module output will be published here once validated.
+Modules install individually by raw JSON URL.
 
-Initial scope: retained video/anime streams, NSFW stream modules, Nyaa, SubsPlease, and new stream sources where useful.
+Current module:
+
+- PH Stream: search/details metadata only. Direct streams are not implemented.

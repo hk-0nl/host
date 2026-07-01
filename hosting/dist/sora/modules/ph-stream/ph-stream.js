@@ -115,5 +115,5 @@ async function extractEpisodes(key) {
 }
 
 async function extractStreamUrl(key) {
-  return officialVideoUrl(key) || officialVideoUrl(videoKey(key)) || null;
+  return null;
 }
