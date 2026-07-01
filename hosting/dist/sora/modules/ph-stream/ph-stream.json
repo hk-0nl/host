@@ -1,0 +1,18 @@
+{
+  "sourceName": "PH Stream",
+  "iconUrl": "",
+  "author": {
+    "name": "hk-0nl"
+  },
+  "version": "0.0.1-dev",
+  "language": "Multi",
+  "streamType": "Official Web Player",
+  "quality": "First-party",
+  "baseUrl": "https://www.pornhub.com",
+  "searchBaseUrl": "https://www.pornhub.com/webmasters/search",
+  "scriptUrl": "https://raw.githubusercontent.com/hk-0nl/host/main/hosting/dist/sora/modules/ph-stream/ph-stream.js",
+  "type": "video",
+  "asyncJS": true,
+  "settings": true,
+  "devStatus": "metadata-deeplink"
+}

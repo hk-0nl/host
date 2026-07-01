@@ -1,0 +1,27 @@
+{
+  "updated": "2026-06-30",
+  "note": "Sora modules install by raw JSON URL. These are runtime-test/dev modules.",
+  "modules": [
+    {
+      "id": "123av",
+      "sourceName": "123AV",
+      "installUrl": "https://raw.githubusercontent.com/hk-0nl/host/main/hosting/dist/sora/modules/123av/123av.json",
+      "scriptUrl": "https://raw.githubusercontent.com/hk-0nl/host/main/hosting/dist/sora/modules/123av/123av.js",
+      "devStatus": "runtime-test"
+    },
+    {
+      "id": "vivamaxph",
+      "sourceName": "VIVAMAXph",
+      "installUrl": "https://raw.githubusercontent.com/hk-0nl/host/main/hosting/dist/sora/modules/vivamaxph/vivamaxph.json",
+      "scriptUrl": "https://raw.githubusercontent.com/hk-0nl/host/main/hosting/dist/sora/modules/vivamaxph/vivamaxph.js",
+      "devStatus": "runtime-test"
+    },
+    {
+      "id": "ph-stream",
+      "sourceName": "PH Stream",
+      "installUrl": "https://raw.githubusercontent.com/hk-0nl/host/main/hosting/dist/sora/modules/ph-stream/ph-stream.json",
+      "scriptUrl": "https://raw.githubusercontent.com/hk-0nl/host/main/hosting/dist/sora/modules/ph-stream/ph-stream.js",
+      "devStatus": "metadata-deeplink"
+    }
+  ]
+}

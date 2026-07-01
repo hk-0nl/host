@@ -1,0 +1,18 @@
+{
+  "sourceName": "123AV",
+  "iconUrl": "https://raw.githubusercontent.com/gato404/kegareta-sauces/main/javascript/icon/123av.png",
+  "author": {
+    "name": "hk-0nl"
+  },
+  "version": "0.0.1-dev",
+  "language": "Multi",
+  "streamType": "HLS/MP4",
+  "quality": "Variable",
+  "baseUrl": "https://123av.com/en",
+  "searchBaseUrl": "https://123av.com/en",
+  "scriptUrl": "https://raw.githubusercontent.com/hk-0nl/host/main/hosting/dist/sora/modules/123av/123av.js",
+  "type": "video",
+  "asyncJS": true,
+  "settings": false,
+  "devStatus": "runtime-test"
+}
