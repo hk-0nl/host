@@ -1,5 +1,9 @@
 # Aidoku Sources
 
-Aidoku source output will be published here once validated.
+Install the source list in Aidoku:
 
-Initial queue: nhentai, E-Hentai, Hitomi, and Madokami.
+- `https://raw.githubusercontent.com/hk-0nl/host/main/hosting/dist/aidoku/index.json`
+
+Current packages:
+
+- Anna's Archive: `https://raw.githubusercontent.com/hk-0nl/host/main/hosting/dist/aidoku/sources/en.annasarchive-v1.aix`

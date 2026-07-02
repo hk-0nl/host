@@ -1,0 +1,18 @@
+{
+  "name": "hk-0nl Aidoku",
+  "sources": [
+    {
+      "id": "en.annasarchive",
+      "name": "Anna's Archive",
+      "version": 1,
+      "iconURL": "icons/en.annasarchive-v1.png",
+      "downloadURL": "sources/en.annasarchive-v1.aix",
+      "languages": [
+        "en"
+      ],
+      "contentRating": 1,
+      "baseURL": "https://annas-archive.org",
+      "minAppVersion": "0.8.3"
+    }
+  ]
+}
