@@ -13,6 +13,19 @@
       "contentRating": 1,
       "baseURL": "https://annas-archive.gl",
       "minAppVersion": "0.8.3"
+    },
+    {
+      "id": "en.novelupdates",
+      "name": "NovelUpdates",
+      "version": 1,
+      "iconURL": "icons/en.novelupdates-v1.png",
+      "downloadURL": "sources/en.novelupdates-v1.aix",
+      "languages": [
+        "en"
+      ],
+      "contentRating": 1,
+      "baseURL": "https://www.novelupdates.com",
+      "minAppVersion": "0.8.3"
     }
   ]
 }
