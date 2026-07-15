@@ -17,9 +17,9 @@
     {
       "id": "en.novelupdates",
       "name": "NovelUpdates",
-      "version": 4,
+      "version": 5,
       "iconURL": "icons/en.novelupdates-v1.png",
-      "downloadURL": "sources/en.novelupdates-v4.aix",
+      "downloadURL": "sources/en.novelupdates-v5.aix",
       "languages": [
         "en"
       ],
