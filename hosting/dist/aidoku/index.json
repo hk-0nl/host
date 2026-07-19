@@ -26,6 +26,19 @@
       "contentRating": 1,
       "baseURL": "https://www.novelupdates.com",
       "minAppVersion": "0.8.3"
+    },
+    {
+      "id": "en.royalroad",
+      "name": "Royal Road",
+      "version": 1,
+      "iconURL": "icons/en.royalroad-v1.png",
+      "downloadURL": "sources/en.royalroad-v1.aix",
+      "languages": [
+        "en"
+      ],
+      "contentRating": 1,
+      "baseURL": "https://www.royalroad.com",
+      "minAppVersion": "0.8.3"
     }
   ]
 }
