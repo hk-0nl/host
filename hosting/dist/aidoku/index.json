@@ -39,6 +39,32 @@
       "contentRating": 1,
       "baseURL": "https://www.royalroad.com",
       "minAppVersion": "0.8.3"
+    },
+    {
+      "id": "multi.hitomi",
+      "name": "Hitomi",
+      "version": 3,
+      "iconURL": "icons/multi.hitomi-v3.png",
+      "downloadURL": "sources/multi.hitomi-v3.aix",
+      "languages": [
+        "All", "en", "id", "jv", "ca", "ceb", "cs", "da", "de", "et", "es", "eo", "fr",
+        "it", "hi", "hu", "pl", "pt", "vi", "tr", "ru", "uk", "ar", "ko", "zh", "ja"
+      ],
+      "contentRating": 2,
+      "baseURL": "https://hitomi.la",
+      "minAppVersion": "0.7.1"
+    },
+    {
+      "id": "multi.nhentai",
+      "name": "nhentai",
+      "version": 17,
+      "iconURL": "icons/multi.nhentai-v17.png",
+      "downloadURL": "sources/multi.nhentai-v17.aix",
+      "languages": [
+        "All", "en", "ja", "zh"
+      ],
+      "contentRating": 2,
+      "baseURL": "https://nhentai.net"
     }
   ]
 }
