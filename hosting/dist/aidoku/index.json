@@ -15,6 +15,19 @@
       "minAppVersion": "0.8.3"
     },
     {
+      "id": "en.madokami",
+      "name": "Madokami",
+      "version": 2,
+      "iconURL": "icons/en.madokami-v2.png",
+      "downloadURL": "sources/en.madokami-v2.aix",
+      "languages": [
+        "en"
+      ],
+      "contentRating": 1,
+      "baseURL": "https://manga.madokami.al",
+      "minAppVersion": "0.7.1"
+    },
+    {
       "id": "en.novelupdates",
       "name": "NovelUpdates",
       "version": 21,
