@@ -41,6 +41,19 @@
       "minAppVersion": "0.8.3"
     },
     {
+      "id": "en.novelfire",
+      "name": "NovelFire",
+      "version": 1,
+      "iconURL": "icons/en.novelfire-v1.png",
+      "downloadURL": "sources/en.novelfire-v1.aix",
+      "languages": [
+        "en"
+      ],
+      "contentRating": 1,
+      "baseURL": "https://novelfire.net",
+      "minAppVersion": "0.8.3"
+    },
+    {
       "id": "en.royalroad",
       "name": "Royal Road",
       "version": 2,
