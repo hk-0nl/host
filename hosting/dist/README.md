@@ -8,4 +8,4 @@ Current direction:
 - Aidoku: novels, manga, image boards, and gallery sources.
 - Sora: TV, movies, video, anime, and stream modules.
 
-Mangayomi is not a primary target. Stable Sora stream modules may be backported later only when Mangayomi discovery or account hooks add value.
+Mangayomi is not a primary target. Selected sources are published when its mixed-media, discovery, or account hooks add material value; Gelbooru is the current maintained source.

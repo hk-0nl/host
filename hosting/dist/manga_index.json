@@ -1,0 +1,24 @@
+[
+  {
+    "name": "Gelbooru",
+    "id": 901000022,
+    "baseUrl": "https://gelbooru.com",
+    "lang": "all",
+    "typeSource": "single",
+    "iconUrl": "https://gelbooru.com/favicon.ico",
+    "dateFormat": "",
+    "dateFormatLocale": "",
+    "isNsfw": true,
+    "hasCloudflare": false,
+    "sourceCodeUrl": "https://raw.githubusercontent.com/hk-0nl/host/main/hosting/dist/mangayomi/sources/dart/manga/src/all/gelbooru/gelbooru.dart",
+    "apiUrl": "",
+    "version": "0.0.3",
+    "isManga": true,
+    "itemType": 0,
+    "isFullData": false,
+    "appMinVerReq": "0.5.0",
+    "additionalParams": "",
+    "sourceCodeLanguage": 0,
+    "notes": "[NSFW] Mixed-media Gelbooru source with optional API credentials, local tag blacklist, an account-free Display all site content preference, and public HTML fallback when DAPI requires authentication."
+  }
+]
