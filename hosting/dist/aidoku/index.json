@@ -73,7 +73,7 @@
       "iconURL": "icons/multi.gelbooru-v1.png",
       "downloadURL": "sources/multi.gelbooru-v1.aix",
       "languages": [
-        "All"
+        "multi"
       ],
       "contentRating": 2,
       "baseURL": "https://gelbooru.com",
