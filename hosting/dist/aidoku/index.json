@@ -109,9 +109,9 @@
     {
       "id": "multi.nhentai",
       "name": "nhentai",
-      "version": 19,
+      "version": 20,
       "iconURL": "icons/multi.nhentai-v18.png",
-      "downloadURL": "sources/multi.nhentai-v19.aix",
+      "downloadURL": "sources/multi.nhentai-v20.aix",
       "languages": [
         "All", "en", "ja", "zh"
       ],
