@@ -69,9 +69,9 @@
     {
       "id": "multi.gelbooru",
       "name": "Gelbooru",
-      "version": 29,
+      "version": 30,
       "iconURL": "icons/multi.gelbooru-v1.png",
-      "downloadURL": "sources/multi.gelbooru-v29.aix",
+      "downloadURL": "sources/multi.gelbooru-v30.aix",
       "languages": [
         "multi"
       ],
