@@ -1,5 +1,5 @@
 {
-  "name": "hk-0nl Aidoku",
+  "name": "hk-0nl Aidoku v51 Candidate",
   "sources": [
     {
       "id": "en.annasarchive",
@@ -69,9 +69,9 @@
     {
       "id": "multi.gelbooru",
       "name": "Gelbooru",
-      "version": 50,
+      "version": 51,
       "iconURL": "icons/multi.gelbooru-v1.png",
-      "downloadURL": "sources/multi.gelbooru-v50.aix",
+      "downloadURL": "sources/multi.gelbooru-v51.aix",
       "languages": [
         "multi"
       ],
