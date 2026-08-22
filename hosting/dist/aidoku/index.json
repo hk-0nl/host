@@ -99,6 +99,19 @@
       "minAppVersion": "0.8.3"
     },
     {
+      "id": "en.mangabat",
+      "name": "MangaBat",
+      "version": 10,
+      "iconURL": "icons/en.mangabat-v10.png",
+      "downloadURL": "sources/en.mangabat-v10.aix",
+      "languages": [
+        "en"
+      ],
+      "contentRating": 1,
+      "baseURL": "https://www.mangabats.com",
+      "minAppVersion": "0.8.3"
+    },
+    {
       "id": "multi.gelbooru",
       "name": "Gelbooru",
       "version": 56,
