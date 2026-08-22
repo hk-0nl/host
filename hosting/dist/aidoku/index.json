@@ -28,6 +28,38 @@
       "minAppVersion": "0.7.1"
     },
     {
+      "id": "en.comix",
+      "name": "Comix",
+      "version": 24,
+      "iconURL": "icons/en.comix-v24.png",
+      "downloadURL": "sources/en.comix-v24.aix",
+      "languages": [
+        "en"
+      ],
+      "contentRating": 1,
+      "baseURL": "https://comix.to",
+      "minAppVersion": "0.8.4"
+    },
+    {
+      "id": "multi.mangafire",
+      "name": "MangaFire",
+      "version": 9,
+      "iconURL": "icons/multi.mangafire-v9.png",
+      "downloadURL": "sources/multi.mangafire-v9.aix",
+      "languages": [
+        "en",
+        "es",
+        "es-419",
+        "fr",
+        "ja",
+        "pt",
+        "pt-BR"
+      ],
+      "contentRating": 1,
+      "baseURL": "https://mangafire.to",
+      "minAppVersion": "0.7.1"
+    },
+    {
       "id": "en.novelupdates",
       "name": "NovelUpdates",
       "version": 21,
@@ -43,9 +75,9 @@
     {
       "id": "en.novelfire",
       "name": "NovelFire",
-      "version": 1,
-      "iconURL": "icons/en.novelfire-v1.png",
-      "downloadURL": "sources/en.novelfire-v1.aix",
+      "version": 2,
+      "iconURL": "icons/en.novelfire-v2.png",
+      "downloadURL": "sources/en.novelfire-v2.aix",
       "languages": [
         "en"
       ],
@@ -56,9 +88,9 @@
     {
       "id": "en.royalroad",
       "name": "Royal Road",
-      "version": 2,
-      "iconURL": "icons/en.royalroad-v2.png",
-      "downloadURL": "sources/en.royalroad-v2.aix",
+      "version": 3,
+      "iconURL": "icons/en.royalroad-v3.png",
+      "downloadURL": "sources/en.royalroad-v3.aix",
       "languages": [
         "en"
       ],
