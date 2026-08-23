@@ -30,9 +30,9 @@
     {
       "id": "en.comix",
       "name": "Comix",
-      "version": 30,
-      "iconURL": "icons/en.comix-v30.png",
-      "downloadURL": "sources/en.comix-v30.aix",
+      "version": 31,
+      "iconURL": "icons/en.comix-v31.png",
+      "downloadURL": "sources/en.comix-v31.aix",
       "languages": [
         "en"
       ],
@@ -101,9 +101,9 @@
     {
       "id": "en.mangabat",
       "name": "MangaBat",
-      "version": 11,
-      "iconURL": "icons/en.mangabat-v11.png",
-      "downloadURL": "sources/en.mangabat-v11.aix",
+      "version": 12,
+      "iconURL": "icons/en.mangabat-v12.png",
+      "downloadURL": "sources/en.mangabat-v12.aix",
       "languages": [
         "en"
       ],
