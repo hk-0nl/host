@@ -30,9 +30,9 @@
     {
       "id": "en.comix",
       "name": "Comix",
-			"version": 45,
-			"iconURL": "icons/en.comix-v45.png",
-			"downloadURL": "sources/en.comix-v45.aix",
+			"version": 46,
+			"iconURL": "icons/en.comix-v46.png",
+			"downloadURL": "sources/en.comix-v46.aix",
       "languages": [
         "en"
       ],
@@ -43,9 +43,9 @@
     {
       "id": "multi.mangafire",
       "name": "MangaFire",
-      "version": 14,
-      "iconURL": "icons/multi.mangafire-v14.png",
-      "downloadURL": "sources/multi.mangafire-v14.aix",
+			"version": 15,
+			"iconURL": "icons/multi.mangafire-v15.png",
+			"downloadURL": "sources/multi.mangafire-v15.aix",
       "languages": [
         "en",
         "es",
