@@ -30,9 +30,9 @@
     {
       "id": "en.comix",
       "name": "Comix",
-			"version": 48,
-			"iconURL": "icons/en.comix-v48.png",
-			"downloadURL": "sources/en.comix-v48.aix",
+			"version": 49,
+			"iconURL": "icons/en.comix-v49.png",
+			"downloadURL": "sources/en.comix-v49.aix",
       "languages": [
         "en"
       ],
