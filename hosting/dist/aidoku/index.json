@@ -127,11 +127,23 @@
     {
       "id": "multi.danbooru",
       "name": "Danbooru",
-      "version": 8,
+      "version": 9,
       "iconURL": "icons/multi.danbooru-v1.png",
-      "downloadURL": "sources/multi.danbooru-v8.aix",
+      "downloadURL": "sources/multi.danbooru-v9.aix",
       "languages": [
-        "multi"
+        "All",
+        "en",
+        "ja",
+        "zh",
+        "ko",
+        "es",
+        "fr",
+        "de",
+        "pt",
+        "ru",
+        "it",
+        "th",
+        "vi"
       ],
       "contentRating": 2,
       "baseURL": "https://danbooru.donmai.us",
