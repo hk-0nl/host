@@ -114,9 +114,9 @@
     {
       "id": "multi.gelbooru",
       "name": "Gelbooru",
-      "version": 58,
+      "version": 59,
       "iconURL": "icons/multi.gelbooru-v1.png",
-      "downloadURL": "sources/multi.gelbooru-v58.aix",
+      "downloadURL": "sources/multi.gelbooru-v59.aix",
       "languages": [
         "multi"
       ],
@@ -127,9 +127,9 @@
     {
       "id": "multi.danbooru",
       "name": "Danbooru",
-      "version": 12,
+      "version": 13,
       "iconURL": "icons/multi.danbooru-v1.png",
-      "downloadURL": "sources/multi.danbooru-v12.aix",
+      "downloadURL": "sources/multi.danbooru-v13.aix",
       "languages": [
         "All",
         "en",
