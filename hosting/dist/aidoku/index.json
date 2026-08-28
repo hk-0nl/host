@@ -62,9 +62,9 @@
     {
       "id": "en.novelupdates",
       "name": "NovelUpdates",
-      "version": 22,
+      "version": 23,
       "iconURL": "icons/en.novelupdates-v1.png",
-      "downloadURL": "sources/en.novelupdates-v22.aix",
+      "downloadURL": "sources/en.novelupdates-v23.aix",
       "languages": [
         "en"
       ],
@@ -127,9 +127,9 @@
     {
       "id": "multi.danbooru",
       "name": "Danbooru",
-      "version": 17,
+      "version": 18,
       "iconURL": "icons/multi.danbooru-v1.png",
-      "downloadURL": "sources/multi.danbooru-v17.aix",
+      "downloadURL": "sources/multi.danbooru-v18.aix",
       "languages": [
         "All",
         "en",
