@@ -12,13 +12,13 @@
     "hasCloudflare": false,
     "sourceCodeUrl": "https://raw.githubusercontent.com/hk-0nl/host/main/hosting/dist/mangayomi/sources/dart/manga/src/all/gelbooru/gelbooru.dart",
     "apiUrl": "",
-    "version": "0.0.3",
+    "version": "0.0.4",
     "isManga": true,
     "itemType": 0,
     "isFullData": false,
     "appMinVerReq": "0.5.0",
     "additionalParams": "",
     "sourceCodeLanguage": 0,
-    "notes": "[NSFW] Mixed-media Gelbooru source with optional API credentials, local tag blacklist, an account-free Display all site content preference, and public HTML fallback when DAPI requires authentication."
+    "notes": "[NSFW] Bridge-safe mixed-media Gelbooru source with typed chapters, listing thumbnails, categorized detail metadata, optional API credentials, Display all site content, and public HTML fallback."
   }
 ]

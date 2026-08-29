@@ -5,6 +5,10 @@ import 'package:mangayomi/bridge_lib.dart';
 // API: /index.php?page=dapi&s=post&q=index&json=1
 // Pagination: &pid= (0-based)
 //
+// ── Changes in 0.0.4 ─────────────────────────────────────────────────────────
+// FIX   — Use explicitly typed MChapter lists for D4rt bridge compatibility.
+// FEAT  — Populate categorized tags, creator/uploader fields, and chapter metadata.
+//
 // ── Changes in 0.0.3 ─────────────────────────────────────────────────────────
 // FEAT  — Optional account-free fringeBenefits cookie exposes all site content.
 //
@@ -73,11 +77,21 @@ class Gelbooru extends MProvider {
     final preview = post["preview_url"]?.toString() ?? sample;
     final ext = (post["file_ext"]?.toString() ?? "").toLowerCase();
     final isVideo = ext == "webm" || ext == "mp4";
-    final isAnimated = ext == "gif";
+    final tags = _postTags(post);
+    final isAnimated =
+        ext == "gif" ||
+        tags.contains("animated") ||
+        tags.contains("animated_gif") ||
+        tags.contains("animated_png");
 
     final manga = MManga();
     manga.name = _buildTitle(post, id);
     manga.imageUrl = preview.isNotEmpty ? preview : fileUrl;
+    manga.link = "gelbooru://post?id=" + id;
+    manga.genre = tags;
+    manga.artist = _displayTags(_categoryTags(post, "artist"));
+    manga.author = post["_uploader"]?.toString() ?? "";
+    final chapters = <MChapter>[];
 
     if (isVideo) {
       // FEAT: Use actual video file URL so getVideoList() hands it to the player.
@@ -90,25 +104,28 @@ class Gelbooru extends MProvider {
           "\n\n" +
           _buildDescription(post, id) +
           "\n\nOpen as video chapter for in-app playback.";
-      manga.chapters = [
-        MChapter(
-          name: "Play video (." + ext + ")",
-          url: fileUrl.isNotEmpty ? fileUrl : preview,
+      chapters.add(
+        _mediaChapter(
+          "Play video (." + ext + ")",
+          fileUrl.isNotEmpty ? fileUrl : preview,
+          post,
+          preview,
         ),
-      ];
+      );
     } else if (isAnimated) {
       manga.description = _buildDescription(post, id);
-      manga.chapters = [
-        MChapter(
-          name: "Animated GIF",
-          url: sample.isNotEmpty ? sample : fileUrl,
+      chapters.add(
+        _mediaChapter(
+          "Animated media (." + ext + ")",
+          sample.isNotEmpty ? sample : fileUrl,
+          post,
+          preview,
         ),
-      ];
+      );
     } else {
       manga.description = _buildDescription(post, id);
-      final chapters = <MChapter>[];
       if (fileUrl.isNotEmpty)
-        chapters.add(MChapter(name: "Image ." + ext, url: fileUrl));
+        chapters.add(_mediaChapter("Image ." + ext, fileUrl, post, preview));
       if (chapters.isEmpty) {
         chapters.add(
           MChapter(
@@ -117,8 +134,8 @@ class Gelbooru extends MProvider {
           ),
         );
       }
-      manga.chapters = chapters;
     }
+    manga.chapters = chapters;
     return manga;
   }
 
@@ -191,13 +208,16 @@ class Gelbooru extends MProvider {
       final id = post["id"]?.toString() ?? "";
       if (id.isEmpty) continue;
       final fileUrl = post["file_url"]?.toString() ?? "";
-      final preview =
-          post["preview_url"]?.toString() ??
-          post["sample_url"]?.toString() ??
-          fileUrl;
+      final preview = _absoluteUrl(
+        post["preview_url"]?.toString() ??
+            post["sample_url"]?.toString() ??
+            fileUrl,
+      );
       final item = MManga();
       item.name = _buildTitle(post, id);
       item.imageUrl = preview.isNotEmpty ? preview : fileUrl;
+      item.description = _buildListingDescription(post);
+      item.genre = _postTags(post);
       item.link = "gelbooru://post?id=" + id;
       items.add(item);
     }
@@ -214,7 +234,11 @@ class Gelbooru extends MProvider {
     if (res == null) return _fetchHtmlPost(id);
     final posts = _decodePostList(res.body);
     if (posts.isEmpty) return _fetchHtmlPost(id);
-    return _asMap(posts.first);
+    final apiPost = _asMap(posts.first);
+    final htmlPost = await _fetchHtmlPost(id);
+    if (htmlPost.isEmpty) return apiPost;
+    htmlPost.addAll(apiPost);
+    return htmlPost;
   }
 
   Future<MPages> _fetchHtmlPage(int page, String tags) async {
@@ -228,7 +252,7 @@ class Gelbooru extends MProvider {
     if (res == null) return MPages([], false);
 
     final pattern = RegExp(
-      r'''href="([^"]*page=post(?:&amp;|&)s=view(?:&amp;|&)id=(\d+)[^"]*)"[^>]*>\s*<img[^>]+(?:data-src|src)="([^"]+)"''',
+      r'''href="([^"]*page=post(?:&amp;|&)s=view(?:&amp;|&)id=(\d+)[^"]*)"[^>]*>\s*<img[^>]+(?:data-src|src)="([^"]+)"([^>]*)>''',
       caseSensitive: false,
       multiLine: true,
     );
@@ -239,9 +263,18 @@ class Gelbooru extends MProvider {
       final thumbnail = _absoluteUrl(_decodeHtml(match.group(3) ?? ""));
       if (id.isEmpty || thumbnail.isEmpty || seen.contains(id)) continue;
       seen.add(id);
+      final title = _decodeHtml(_htmlAttribute(match.group(4) ?? "", "title"));
+      final post = <String, dynamic>{
+        "id": id,
+        "tags": _listingTags(title),
+        "score": _listingMetatag(title, "score"),
+        "rating": _listingMetatag(title, "rating"),
+      };
       final item = MManga();
-      item.name = "#" + id;
+      item.name = _buildTitle(post, id);
       item.imageUrl = thumbnail;
+      item.description = _buildListingDescription(post);
+      item.genre = _postTags(post);
       item.link = "gelbooru://post?id=" + id;
       items.add(item);
     }
@@ -274,6 +307,15 @@ class Gelbooru extends MProvider {
       caseSensitive: false,
       dotAll: true,
     ).firstMatch(res.body);
+    final sectionMatch = RegExp(
+      r'''<section[^>]*\bimage-container\b[^>]*>''',
+      caseSensitive: false,
+    ).firstMatch(res.body);
+    final section = sectionMatch?.group(0) ?? "";
+    final postedMatch = RegExp(
+      r'''Posted:\s*([^<]+)<br\s*/?>\s*Uploader:\s*<a[^>]*>([^<]+)</a>''',
+      caseSensitive: false,
+    ).firstMatch(res.body);
 
     final fileUrl = _absoluteUrl(
       _decodeHtml(originalMatch?.group(1) ?? openGraphMatch?.group(1) ?? ""),
@@ -286,15 +328,36 @@ class Gelbooru extends MProvider {
     final dot = path.lastIndexOf(".");
     final extension = dot == -1 ? "" : path.substring(dot + 1).toLowerCase();
     final title = _decodeHtml(titleMatch?.group(1) ?? "");
-    final tags = title.split(" - Image View").first.replaceAll(", ", " ");
+    final sectionTags = _htmlAttribute(section, "data-tags");
+    final tags = sectionTags.isNotEmpty
+        ? sectionTags
+        : title.split(" - Image View").first.replaceAll(", ", " ");
+    final categories = _htmlTagCategories(res.body);
 
     return <String, dynamic>{
       "id": id,
       "file_url": fileUrl,
       "sample_url": extension == "gif" ? fileUrl : sampleUrl,
       "preview_url": sampleUrl,
-      "file_ext": extension,
+      "file_ext":
+          _htmlAttribute(
+            section,
+            "data-file-ext",
+          ).replaceFirst(".", "").isNotEmpty
+          ? _htmlAttribute(section, "data-file-ext").replaceFirst(".", "")
+          : extension,
       "tags": tags,
+      "width": _htmlAttribute(section, "data-width"),
+      "height": _htmlAttribute(section, "data-height"),
+      "score": _htmlAttribute(section, "data-score"),
+      "rating": _htmlAttribute(section, "data-rating"),
+      "source": _htmlAttribute(section, "data-source"),
+      "created_at": _decodeHtml(postedMatch?.group(1)?.trim() ?? ""),
+      "_uploader": _decodeHtml(postedMatch?.group(2)?.trim() ?? ""),
+      "_artist_tags": categories["artist"] ?? <String>[],
+      "_character_tags": categories["character"] ?? <String>[],
+      "_copyright_tags": categories["copyright"] ?? <String>[],
+      "_metadata_tags": categories["metadata"] ?? <String>[],
     };
   }
 
@@ -327,9 +390,97 @@ class Gelbooru extends MProvider {
     if (src.isNotEmpty) lines.add("Source: " + src);
     final created = post["created_at"]?.toString() ?? "";
     if (created.isNotEmpty) lines.add("Posted: " + created);
+    final uploader = post["_uploader"]?.toString() ?? "";
+    if (uploader.isNotEmpty) lines.add("Uploader: " + uploader);
+    _appendCategory(lines, "Artists", _categoryTags(post, "artist"));
+    _appendCategory(lines, "Characters", _categoryTags(post, "character"));
+    _appendCategory(lines, "Copyrights", _categoryTags(post, "copyright"));
+    _appendCategory(lines, "Metadata", _categoryTags(post, "metadata"));
     final tags = post["tags"]?.toString() ?? "";
     if (tags.isNotEmpty) lines.add("\nTags:\n" + tags.replaceAll(" ", ", "));
     return lines.join("\n");
+  }
+
+  String _buildListingDescription(Map<String, dynamic> post) {
+    final parts = <String>[];
+    final score = post["score"]?.toString() ?? "";
+    final rating = post["rating"]?.toString() ?? "";
+    if (score.isNotEmpty) parts.add("Score: " + score);
+    if (rating.isNotEmpty) parts.add("Rating: " + rating);
+    return parts.join(" | ");
+  }
+
+  MChapter _mediaChapter(
+    String name,
+    String url,
+    Map<String, dynamic> post,
+    String thumbnail,
+  ) {
+    final chapter = MChapter(name: name, url: url);
+    chapter.thumbnailUrl = thumbnail;
+    chapter.dateUpload = post["created_at"]?.toString() ?? "";
+    chapter.description = _buildListingDescription(post);
+    return chapter;
+  }
+
+  List<String> _postTags(Map<String, dynamic> post) =>
+      (post["tags"]?.toString() ?? "")
+          .split(RegExp(r'\s+'))
+          .where((tag) => tag.isNotEmpty)
+          .toList();
+
+  List<String> _categoryTags(Map<String, dynamic> post, String category) {
+    final value = post["_" + category + "_tags"];
+    if (value is List) return value.map((tag) => tag.toString()).toList();
+    return [];
+  }
+
+  String _displayTags(List<String> tags) =>
+      tags.map((tag) => tag.replaceAll("_", " ")).join(", ");
+
+  void _appendCategory(List<String> lines, String label, List<String> tags) {
+    if (tags.isNotEmpty) lines.add(label + ": " + _displayTags(tags));
+  }
+
+  String _htmlAttribute(String fragment, String name) {
+    final match = RegExp(
+      name + r'''\s*=\s*["']([^"']*)["']''',
+      caseSensitive: false,
+    ).firstMatch(fragment);
+    return _decodeHtml(match?.group(1) ?? "");
+  }
+
+  Map<String, List<String>> _htmlTagCategories(String html) {
+    final result = <String, List<String>>{};
+    final pattern = RegExp(
+      r'''<li[^>]+class="tag-type-([^"]+)"[^>]*>.*?<a[^>]+href="[^"]*page=post(?:&amp;|&)s=list(?:&amp;|&)tags=([^"&]+)[^"]*"''',
+      caseSensitive: false,
+      dotAll: true,
+    );
+    for (final match in pattern.allMatches(html)) {
+      final category = match.group(1)?.toLowerCase() ?? "";
+      final encoded = _decodeHtml(match.group(2) ?? "");
+      final tag = Uri.decodeQueryComponent(encoded);
+      if (category.isEmpty || tag.isEmpty) continue;
+      result.putIfAbsent(category, () => <String>[]).add(tag);
+    }
+    return result;
+  }
+
+  String _listingTags(String title) => title
+      .split(RegExp(r'\s+'))
+      .takeWhile(
+        (token) => !token.startsWith("score:") && !token.startsWith("rating:"),
+      )
+      .where((token) => token.isNotEmpty)
+      .join(" ");
+
+  String _listingMetatag(String title, String name) {
+    final match = RegExp(
+      r'(?:^|\s)' + name + r':([^\s]+)',
+      caseSensitive: false,
+    ).firstMatch(title);
+    return match?.group(1) ?? "";
   }
 
   String _idFromUrl(String url) {
