@@ -88,9 +88,9 @@
     {
       "id": "en.royalroad",
       "name": "Royal Road",
-      "version": 5,
+      "version": 6,
       "iconURL": "icons/en.royalroad-v4.png",
-      "downloadURL": "sources/en.royalroad-v5.aix",
+      "downloadURL": "sources/en.royalroad-v6.aix",
       "languages": [
         "en"
       ],
