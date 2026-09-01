@@ -14,7 +14,7 @@ Current packages:
 - Gelbooru v50: `https://raw.githubusercontent.com/hk-0nl/host/main/hosting/dist/aidoku/sources/multi.gelbooru-v50.aix`
 - E-Hentai v4: `https://raw.githubusercontent.com/hk-0nl/host/main/hosting/dist/aidoku/sources/multi.ehentai-v4.aix`
 - Hitomi v3: `https://raw.githubusercontent.com/hk-0nl/host/main/hosting/dist/aidoku/sources/multi.hitomi-v3.aix`
-- nhentai v24: `https://raw.githubusercontent.com/hk-0nl/host/main/hosting/dist/aidoku/sources/multi.nhentai-v24.aix`
+- nhentai v25: `https://raw.githubusercontent.com/hk-0nl/host/main/hosting/dist/aidoku/sources/multi.nhentai-v25.aix`
 
 Anna's Archive defaults to `annas-archive.gl`. Change the source settings to use `.li`, `.org`, `.se`, or a custom reachable mirror.
 
@@ -30,6 +30,6 @@ E-Hentai v4 adds read-only authenticated Favorites alongside Watched, richer lan
 
 Hitomi v3 provides recent/popular listings, text and creator/tag/type filters, rich gallery metadata, current `gg.js` image routing, language settings, and deep links. Its package metadata now declares the Aidoku 0.7.1 minimum required by its WASM API.
 
-nhentai v24 provides recent/popular listings, Home sections, qualified creator/tag filters, account-favorites search, local saved searches, language/title/blocklist settings, rich gallery metadata, image pages, and deep links. Public mode uses a safe nine-request-per-minute budget; a validated API key raises the shared budget to fifteen requests per minute. Bounded 60-second response caches reuse repeated Home/listing/search and numeric lookup/detail/chapter/page work.
+nhentai v25 provides recent/popular listings, Home sections, qualified creator/tag filters, account-favorites search, local saved searches, language/title/blocklist settings, rich gallery metadata, image pages, and deep links. Public mode uses a safe nine-request-per-minute budget; a validated API key raises the shared budget to fifteen requests per minute. Bounded 60-second response caches reuse repeated Home/listing/search and numeric lookup/detail/chapter/page work.
 
 NovelUpdates v21 retains v18's cover routing, raw release labels, language/group/date display, native status badge, chapter handoff fallbacks, genre badges, and Home genre filters. It loads release pages 2+ through persistent-WebView navigation, discovers pagination across matching containers, and checks up to a 12-page safety cap. Decimal split labels such as `c214.1` are matched to release-table labels such as `c214 part1`; each page logs release-row and enrichment counts for runtime diagnosis. A failed page does not clear earlier metadata. Account tracking and in-app translator-page extraction are not supported.
