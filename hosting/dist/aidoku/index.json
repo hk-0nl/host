@@ -179,14 +179,15 @@
     {
       "id": "multi.nhentai",
       "name": "nhentai",
-      "version": 20,
+      "version": 21,
       "iconURL": "icons/multi.nhentai-v18.png",
-      "downloadURL": "sources/multi.nhentai-v20.aix",
+      "downloadURL": "sources/multi.nhentai-v21.aix",
       "languages": [
         "All", "en", "ja", "zh"
       ],
       "contentRating": 2,
-      "baseURL": "https://nhentai.net"
+      "baseURL": "https://nhentai.net",
+      "minAppVersion": "0.8.3"
     }
   ]
 }
