@@ -152,9 +152,9 @@
     {
       "id": "multi.ehentai",
       "name": "E-Hentai",
-      "version": 5,
+      "version": 6,
       "iconURL": "icons/multi.ehentai-v4.png",
-      "downloadURL": "sources/multi.ehentai-v5.aix",
+      "downloadURL": "sources/multi.ehentai-v6.aix",
       "languages": [
         "All",
         "ja",
