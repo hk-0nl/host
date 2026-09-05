@@ -230,6 +230,19 @@
       "contentRating": 2,
       "baseURL": "https://nhentai.net",
       "minAppVersion": "0.8.3"
+    },
+    {
+      "id": "en.opds",
+      "name": "OPDS Catalog",
+      "version": 1,
+      "iconURL": "icons/en.opds-v1.png",
+      "downloadURL": "sources/en.opds-v1.aix",
+      "languages": [
+        "en"
+      ],
+      "contentRating": 0,
+      "baseURL": "https://www.gutenberg.org",
+      "minAppVersion": "0.8.3"
     }
   ]
 }
