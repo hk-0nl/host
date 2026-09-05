@@ -12,7 +12,7 @@ Current packages:
 - NovelFire v1: `https://raw.githubusercontent.com/hk-0nl/host/main/hosting/dist/aidoku/sources/en.novelfire-v1.aix`
 - Royal Road v2: `https://raw.githubusercontent.com/hk-0nl/host/main/hosting/dist/aidoku/sources/en.royalroad-v2.aix`
 - Gelbooru v50: `https://raw.githubusercontent.com/hk-0nl/host/main/hosting/dist/aidoku/sources/multi.gelbooru-v50.aix`
-- E-Hentai v8: `https://raw.githubusercontent.com/hk-0nl/host/main/hosting/dist/aidoku/sources/multi.ehentai-v8.aix`
+- E-Hentai v9: `https://raw.githubusercontent.com/hk-0nl/host/main/hosting/dist/aidoku/sources/multi.ehentai-v9.aix`
 - Hitomi v3: `https://raw.githubusercontent.com/hk-0nl/host/main/hosting/dist/aidoku/sources/multi.hitomi-v3.aix`
 - nhentai v26: `https://raw.githubusercontent.com/hk-0nl/host/main/hosting/dist/aidoku/sources/multi.nhentai-v26.aix`
 
@@ -26,7 +26,7 @@ Royal Road v2 provides nine discovery listings, a multi-section Home, title/keyw
 
 Gelbooru v50 provides signed-out search/filters; Latest and all-time Overall/Static/Animated discovery; Top Tags; categorized metadata; static/GIF/WebP image pages; explicit WebM/MP4 web handoff; Comments full-post discovery; distinct family, relationship-pool, and Similar Posts navigation; readable tags; optional family-as-chapters; saved searches; Favorites; and account/session controls. Saved-search chapters include bounded Gelbooru Tag Wiki help. V50 preserves provider-visible HTTP(S) labels and sends inline and See Also tag links to their Gelbooru wiki pages; stock Aidoku opens those links in Safari in scroll mode and leaves them inert in paged text. The reader browser button still opens the exact saved-search post listing. Website-session and DAPI features remain separate, and account mutations report provider results rather than claiming offline success.
 
-E-Hentai v8 makes split-gallery caching durable across source restarts by storing manifests as native string arrays and migrates legacy v7 string caches on read. Split chapters now prefer bounded range manifests even when account cookies are configured, recover their page range from chapter metadata if a persisted URL fragment is lost, and apply bounded request timeouts so abandoned reader work cannot indefinitely block the source. Generated actions, saved searches, toplists, and parsed links consistently follow the selected E-Hentai or ExHentai domain. Cache status identifies cold range, warm range, full, and MPV paths. A live 1,788-page smoke built and reused pages 1-250, fifteen serialized tests pass, and all Aidoku package/schema gates pass.
+E-Hentai v9 keeps v8's durable split-gallery caching, bounded range loading, timeout protection, and selected-domain actions. It fixes ExHentai Home authentication by priming the provider's derived access cookie before parallel sections load, keeps provider-global toplists on their supported E-Hentai route, and rewrites those gallery links to the selected domain. The v8 package remains available for rollback. Thirteen deterministic tests pass and all Aidoku package/schema gates pass; three provider-dependent live checks were unavailable at build time because the test runner could not establish a network connection. Credentialed ExHentai Home and sustained reader behavior still require device validation.
 
 Hitomi v3 provides recent/popular listings, text and creator/tag/type filters, rich gallery metadata, current `gg.js` image routing, language settings, and deep links. Its package metadata now declares the Aidoku 0.7.1 minimum required by its WASM API.
 
