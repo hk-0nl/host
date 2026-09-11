@@ -232,6 +232,58 @@
       "minAppVersion": "0.8.3"
     },
     {
+      "id": "en.bookreadfree",
+      "name": "BookReadFree",
+      "version": 1,
+      "iconURL": "icons/en.bookreadfree-v1.png",
+      "downloadURL": "sources/en.bookreadfree-v1.aix",
+      "languages": [
+        "en"
+      ],
+      "contentRating": 1,
+      "baseURL": "https://bookreadfree.com",
+      "minAppVersion": "0.8.3"
+    },
+    {
+      "id": "en.scribblehub",
+      "name": "Scribble Hub",
+      "version": 1,
+      "iconURL": "icons/en.scribblehub-v1.png",
+      "downloadURL": "sources/en.scribblehub-v1.aix",
+      "languages": [
+        "en"
+      ],
+      "contentRating": 2,
+      "baseURL": "https://www.scribblehub.com",
+      "minAppVersion": "0.8.3"
+    },
+    {
+      "id": "en.webnoveltranslations",
+      "name": "Web Novel Translations",
+      "version": 1,
+      "iconURL": "icons/en.webnoveltranslations-v1.png",
+      "downloadURL": "sources/en.webnoveltranslations-v1.aix",
+      "languages": [
+        "en"
+      ],
+      "contentRating": 1,
+      "baseURL": "https://webnoveltranslations.com",
+      "minAppVersion": "0.8.3"
+    },
+    {
+      "id": "en.wordrain69",
+      "name": "Wordrain69",
+      "version": 1,
+      "iconURL": "icons/en.wordrain69-v1.png",
+      "downloadURL": "sources/en.wordrain69-v1.aix",
+      "languages": [
+        "en"
+      ],
+      "contentRating": 1,
+      "baseURL": "https://wordrain69.com",
+      "minAppVersion": "0.8.3"
+    },
+    {
       "id": "en.opds",
       "name": "OPDS Catalog",
       "version": 5,

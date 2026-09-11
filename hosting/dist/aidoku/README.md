@@ -15,6 +15,10 @@ Current packages:
 - E-Hentai v9: `https://raw.githubusercontent.com/hk-0nl/host/main/hosting/dist/aidoku/sources/multi.ehentai-v9.aix`
 - Hitomi v3: `https://raw.githubusercontent.com/hk-0nl/host/main/hosting/dist/aidoku/sources/multi.hitomi-v3.aix`
 - nhentai v26: `https://raw.githubusercontent.com/hk-0nl/host/main/hosting/dist/aidoku/sources/multi.nhentai-v26.aix`
+- BookReadFree v1: `https://raw.githubusercontent.com/hk-0nl/host/main/hosting/dist/aidoku/sources/en.bookreadfree-v1.aix`
+- Scribble Hub v1: `https://raw.githubusercontent.com/hk-0nl/host/main/hosting/dist/aidoku/sources/en.scribblehub-v1.aix`
+- Web Novel Translations v1: `https://raw.githubusercontent.com/hk-0nl/host/main/hosting/dist/aidoku/sources/en.webnoveltranslations-v1.aix`
+- Wordrain69 v1: `https://raw.githubusercontent.com/hk-0nl/host/main/hosting/dist/aidoku/sources/en.wordrain69-v1.aix`
 - OPDS Catalog v5: `https://raw.githubusercontent.com/hk-0nl/host/main/hosting/dist/aidoku/sources/en.opds-v5.aix`
 
 Anna's Archive defaults to `annas-archive.gl`. Change the source settings to use `.li`, `.org`, `.se`, or a custom reachable mirror.
@@ -37,5 +41,13 @@ E-Hentai v9 keeps v8's durable split-gallery caching, bounded range loading, tim
 Hitomi v3 provides recent/popular listings, text and creator/tag/type filters, rich gallery metadata, current `gg.js` image routing, language settings, and deep links. Its package metadata now declares the Aidoku 0.7.1 minimum required by its WASM API.
 
 nhentai v26 adds public and favorite random discovery, Popular Month, popular tag browsing and API autocomplete across every provider category, dedicated filter boxes for all ten supported prefixes, raw prefixed main-search parity, and explicit provider-blacklist refresh/edit/apply controls. It retains v25 account favorites, local saved searches and blocklist, complete provider tags, readable creator handling, metadata, image pages, and deep links. Public mode uses nine requests per minute; a validated API key raises the shared budget to fifteen, with bounded response caching.
+
+BookReadFree v1 provides Featured and Latest discovery, title search, cover and author metadata, ordered page chapters, text reading, supported inline image pages, and book/chapter deep links.
+
+Scribble Hub v1 provides Series Ranking and Latest Series discovery, search, series metadata, bounded and deduplicated chapter loading, text reading, supported inline image pages, deep links, and a WebLogin setting for Cloudflare verification. Device verification is required when Scribble Hub presents a challenge.
+
+Web Novel Translations v1 provides Latest and Popular discovery, search, metadata, AJAX chapter loading, text reading, supported inline image pages, and deep links. Its package and deterministic parser tests pass, but desktop native HTTPS currently fails during the provider TLS handshake; treat v1 as an experimental device candidate.
+
+Wordrain69 v1 provides Latest and Popular discovery, search, metadata, oldest-first AJAX chapter loading, text reading, meaningful inline image pages, and deep links. Small promotional images are excluded from reader pages.
 
 NovelUpdates v21 retains v18's cover routing, raw release labels, language/group/date display, native status badge, chapter handoff fallbacks, genre badges, and Home genre filters. It loads release pages 2+ through persistent-WebView navigation, discovers pagination across matching containers, and checks up to a 12-page safety cap. Decimal split labels such as `c214.1` are matched to release-table labels such as `c214 part1`; each page logs release-row and enrichment counts for runtime diagnosis. A failed page does not clear earlier metadata. Account tracking and in-app translator-page extraction are not supported.
