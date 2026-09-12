@@ -286,9 +286,9 @@
     {
       "id": "en.opds",
       "name": "OPDS Catalog",
-      "version": 5,
-      "iconURL": "icons/en.opds-v5.png",
-      "downloadURL": "sources/en.opds-v5.aix",
+      "version": 6,
+      "iconURL": "icons/en.opds-v6.png",
+      "downloadURL": "sources/en.opds-v6.aix",
       "languages": [
         "en"
       ],

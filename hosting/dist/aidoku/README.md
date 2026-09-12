@@ -19,14 +19,15 @@ Current packages:
 - Scribble Hub v5: `https://raw.githubusercontent.com/hk-0nl/host/main/hosting/dist/aidoku/sources/en.scribblehub-v5.aix`
 - Web Novel Translations v3: `https://raw.githubusercontent.com/hk-0nl/host/main/hosting/dist/aidoku/sources/en.webnoveltranslations-v3.aix`
 - Wordrain69 v2: `https://raw.githubusercontent.com/hk-0nl/host/main/hosting/dist/aidoku/sources/en.wordrain69-v2.aix`
-- OPDS Catalog v5: `https://raw.githubusercontent.com/hk-0nl/host/main/hosting/dist/aidoku/sources/en.opds-v5.aix`
+- OPDS Catalog v6: `https://raw.githubusercontent.com/hk-0nl/host/main/hosting/dist/aidoku/sources/en.opds-v6.aix`
 
 Anna's Archive defaults to `annas-archive.gl`. Change the source settings to use `.li`, `.org`, `.se`, or a custom reachable mirror.
 
-OPDS Catalog v5 supports OPDS 1.x/2.x navigation, facets, ordered publication
-resources, an editable list of additional feed roots, labeled Home sections,
-bounded Combined browsing, and optional search across mounted feeds. EPUB/PDF/
-CBZ/CBR decoding and local import remain host-application responsibilities.
+OPDS Catalog v6 supports OPDS 1.x/2.x navigation, facets, ordered publication
+resources, an editable list of feed roots, bounded Combined browsing, optional
+search across mounted feeds, explicit HTML catalog discovery, provider-advertised
+advanced search fields, richer acquisition metadata, and on-demand diagnostics.
+EPUB/PDF/CBZ/CBR decoding and local import remain host-application responsibilities.
 
 Madokami v2 provides authenticated search, author/genre filters, metadata, chapters, image pages, and deep links for the private Madokami server. A valid Madokami Basic Auth account is required. The package and non-credential protocol boundary are verified; authenticated catalog and reader behavior require a credentialed device smoke.
 
