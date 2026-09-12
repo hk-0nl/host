@@ -20,7 +20,7 @@ Current packages:
 - Web Novel Translations v3: `https://raw.githubusercontent.com/hk-0nl/host/main/hosting/dist/aidoku/sources/en.webnoveltranslations-v3.aix`
 - Wordrain69 v2: `https://raw.githubusercontent.com/hk-0nl/host/main/hosting/dist/aidoku/sources/en.wordrain69-v2.aix`
 - OPDS Catalog v6: `https://raw.githubusercontent.com/hk-0nl/host/main/hosting/dist/aidoku/sources/en.opds-v6.aix`
-- Kemono v1: `https://raw.githubusercontent.com/hk-0nl/host/main/hosting/dist/aidoku/sources/multi.kemono-v1.aix`
+- Kemono v2: `https://raw.githubusercontent.com/hk-0nl/host/main/hosting/dist/aidoku/sources/multi.kemono-v2.aix`
 
 Anna's Archive defaults to `annas-archive.gl`. Change the source settings to use `.li`, `.org`, `.se`, or a custom reachable mirror.
 
@@ -30,7 +30,7 @@ search across mounted feeds, explicit HTML catalog discovery, provider-advertise
 advanced search fields, richer acquisition metadata, and on-demand diagnostics.
 EPUB/PDF/CBZ/CBR decoding and local import remain host-application responsibilities.
 
-Kemono v1 provides public post discovery, popular and random listings, provider
+Kemono v2 provides public post discovery, popular and random listings, provider
 tag counts, service/creator/media filters, creator timelines, image/GIF/WebP
 previews, readable post information, dates, creator links, and explicit links
 for unsupported video/audio/archive attachments. Account mutations, private or

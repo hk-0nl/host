@@ -299,11 +299,11 @@
     {
       "id": "multi.kemono",
       "name": "Kemono",
-      "version": 1,
-      "iconURL": "icons/multi.kemono-v1.png",
-      "downloadURL": "sources/multi.kemono-v1.aix",
+      "version": 2,
+      "iconURL": "icons/multi.kemono-v2.png",
+      "downloadURL": "sources/multi.kemono-v2.aix",
       "languages": [
-        "All"
+        "multi"
       ],
       "contentRating": 2,
       "baseURL": "https://kemono.cr",
