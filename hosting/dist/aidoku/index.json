@@ -247,9 +247,9 @@
     {
       "id": "en.scribblehub",
       "name": "Scribble Hub",
-      "version": 4,
-      "iconURL": "icons/en.scribblehub-v4.png",
-      "downloadURL": "sources/en.scribblehub-v4.aix",
+      "version": 5,
+      "iconURL": "icons/en.scribblehub-v5.png",
+      "downloadURL": "sources/en.scribblehub-v5.aix",
       "languages": [
         "en"
       ],

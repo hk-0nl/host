@@ -16,7 +16,7 @@ Current packages:
 - Hitomi v3: `https://raw.githubusercontent.com/hk-0nl/host/main/hosting/dist/aidoku/sources/multi.hitomi-v3.aix`
 - nhentai v26: `https://raw.githubusercontent.com/hk-0nl/host/main/hosting/dist/aidoku/sources/multi.nhentai-v26.aix`
 - BookReadFree v2: `https://raw.githubusercontent.com/hk-0nl/host/main/hosting/dist/aidoku/sources/en.bookreadfree-v2.aix`
-- Scribble Hub v4: `https://raw.githubusercontent.com/hk-0nl/host/main/hosting/dist/aidoku/sources/en.scribblehub-v4.aix`
+- Scribble Hub v5: `https://raw.githubusercontent.com/hk-0nl/host/main/hosting/dist/aidoku/sources/en.scribblehub-v5.aix`
 - Web Novel Translations v3: `https://raw.githubusercontent.com/hk-0nl/host/main/hosting/dist/aidoku/sources/en.webnoveltranslations-v3.aix`
 - Wordrain69 v2: `https://raw.githubusercontent.com/hk-0nl/host/main/hosting/dist/aidoku/sources/en.wordrain69-v2.aix`
 - OPDS Catalog v5: `https://raw.githubusercontent.com/hk-0nl/host/main/hosting/dist/aidoku/sources/en.opds-v5.aix`
@@ -44,7 +44,7 @@ nhentai v26 adds public and favorite random discovery, Popular Month, popular ta
 
 BookReadFree v2 provides Featured and Latest discovery, title search, cover and author metadata, newest-first page-part chapters, text reading with AMP fallback, supported inline image pages, and book/chapter deep links. Transient Nginx/502 documents are rejected instead of being exposed as blank titles.
 
-Scribble Hub v2 provides Series Ranking and Latest Series discovery, search, series metadata, bounded and deduplicated chapter loading, text reading, supported inline image pages, deep links, and a WebLogin setting for Cloudflare verification. Native requests remain preferred; only transport or Cloudflare failures fall back to a bounded same-origin WebView request, with no automatic navigation loop. Device verification is required when Scribble Hub presents a challenge.
+Scribble Hub v5 uses Scribble Hub's public `fictionapp/v1` API for Trending, Latest Series, and Recently Updated discovery, search, series metadata, bounded chapter loading, text reading, supported inline image pages, deep links, and release dates/language metadata. It does not require a Cloudflare verification panel or account credentials; the prior WebView-based v1-v4 packages remain available in the repository for rollback.
 
 Web Novel Translations v2 uses the current wntl.net JSON contract for Latest, Popular, and Completed discovery, search, covers, metadata, ordered chapter loading, text reading, and deep links. The provider endpoint currently fails the desktop native TLS handshake in this environment; treat native transport as requiring device validation.
 
