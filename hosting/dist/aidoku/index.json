@@ -295,6 +295,19 @@
       "contentRating": 0,
       "baseURL": "https://www.gutenberg.org",
       "minAppVersion": "0.8.3"
+    },
+    {
+      "id": "multi.kemono",
+      "name": "Kemono",
+      "version": 1,
+      "iconURL": "icons/multi.kemono-v1.png",
+      "downloadURL": "sources/multi.kemono-v1.aix",
+      "languages": [
+        "All"
+      ],
+      "contentRating": 2,
+      "baseURL": "https://kemono.cr",
+      "minAppVersion": "0.8.3"
     }
   ]
 }
