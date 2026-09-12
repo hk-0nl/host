@@ -234,9 +234,9 @@
     {
       "id": "en.bookreadfree",
       "name": "BookReadFree",
-      "version": 1,
-      "iconURL": "icons/en.bookreadfree-v1.png",
-      "downloadURL": "sources/en.bookreadfree-v1.aix",
+      "version": 2,
+      "iconURL": "icons/en.bookreadfree-v2.png",
+      "downloadURL": "sources/en.bookreadfree-v2.aix",
       "languages": [
         "en"
       ],
@@ -247,9 +247,9 @@
     {
       "id": "en.scribblehub",
       "name": "Scribble Hub",
-      "version": 1,
-      "iconURL": "icons/en.scribblehub-v1.png",
-      "downloadURL": "sources/en.scribblehub-v1.aix",
+      "version": 2,
+      "iconURL": "icons/en.scribblehub-v2.png",
+      "downloadURL": "sources/en.scribblehub-v2.aix",
       "languages": [
         "en"
       ],
@@ -260,22 +260,22 @@
     {
       "id": "en.webnoveltranslations",
       "name": "Web Novel Translations",
-      "version": 1,
-      "iconURL": "icons/en.webnoveltranslations-v1.png",
-      "downloadURL": "sources/en.webnoveltranslations-v1.aix",
+      "version": 2,
+      "iconURL": "icons/en.webnoveltranslations-v2.png",
+      "downloadURL": "sources/en.webnoveltranslations-v2.aix",
       "languages": [
         "en"
       ],
       "contentRating": 1,
-      "baseURL": "https://webnoveltranslations.com",
+      "baseURL": "https://wntl.net",
       "minAppVersion": "0.8.3"
     },
     {
       "id": "en.wordrain69",
       "name": "Wordrain69",
-      "version": 1,
-      "iconURL": "icons/en.wordrain69-v1.png",
-      "downloadURL": "sources/en.wordrain69-v1.aix",
+      "version": 2,
+      "iconURL": "icons/en.wordrain69-v2.png",
+      "downloadURL": "sources/en.wordrain69-v2.aix",
       "languages": [
         "en"
       ],
