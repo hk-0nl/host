@@ -247,9 +247,9 @@
     {
       "id": "en.scribblehub",
       "name": "Scribble Hub",
-      "version": 2,
-      "iconURL": "icons/en.scribblehub-v2.png",
-      "downloadURL": "sources/en.scribblehub-v2.aix",
+      "version": 3,
+      "iconURL": "icons/en.scribblehub-v3.png",
+      "downloadURL": "sources/en.scribblehub-v3.aix",
       "languages": [
         "en"
       ],
@@ -260,9 +260,9 @@
     {
       "id": "en.webnoveltranslations",
       "name": "Web Novel Translations",
-      "version": 2,
-      "iconURL": "icons/en.webnoveltranslations-v2.png",
-      "downloadURL": "sources/en.webnoveltranslations-v2.aix",
+      "version": 3,
+      "iconURL": "icons/en.webnoveltranslations-v3.png",
+      "downloadURL": "sources/en.webnoveltranslations-v3.aix",
       "languages": [
         "en"
       ],

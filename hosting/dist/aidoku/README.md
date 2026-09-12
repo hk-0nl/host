@@ -16,8 +16,8 @@ Current packages:
 - Hitomi v3: `https://raw.githubusercontent.com/hk-0nl/host/main/hosting/dist/aidoku/sources/multi.hitomi-v3.aix`
 - nhentai v26: `https://raw.githubusercontent.com/hk-0nl/host/main/hosting/dist/aidoku/sources/multi.nhentai-v26.aix`
 - BookReadFree v2: `https://raw.githubusercontent.com/hk-0nl/host/main/hosting/dist/aidoku/sources/en.bookreadfree-v2.aix`
-- Scribble Hub v2: `https://raw.githubusercontent.com/hk-0nl/host/main/hosting/dist/aidoku/sources/en.scribblehub-v2.aix`
-- Web Novel Translations v2: `https://raw.githubusercontent.com/hk-0nl/host/main/hosting/dist/aidoku/sources/en.webnoveltranslations-v2.aix`
+- Scribble Hub v3: `https://raw.githubusercontent.com/hk-0nl/host/main/hosting/dist/aidoku/sources/en.scribblehub-v3.aix`
+- Web Novel Translations v3: `https://raw.githubusercontent.com/hk-0nl/host/main/hosting/dist/aidoku/sources/en.webnoveltranslations-v3.aix`
 - Wordrain69 v2: `https://raw.githubusercontent.com/hk-0nl/host/main/hosting/dist/aidoku/sources/en.wordrain69-v2.aix`
 - OPDS Catalog v5: `https://raw.githubusercontent.com/hk-0nl/host/main/hosting/dist/aidoku/sources/en.opds-v5.aix`
 
