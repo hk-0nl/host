@@ -299,9 +299,9 @@
     {
       "id": "multi.kemono",
       "name": "Kemono",
-      "version": 2,
-      "iconURL": "icons/multi.kemono-v2.png",
-      "downloadURL": "sources/multi.kemono-v2.aix",
+      "version": 3,
+      "iconURL": "icons/multi.kemono-v3.png",
+      "downloadURL": "sources/multi.kemono-v3.aix",
       "languages": [
         "multi"
       ],
