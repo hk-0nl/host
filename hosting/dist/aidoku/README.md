@@ -20,7 +20,7 @@ Current packages:
 - Web Novel Translations v3: `https://raw.githubusercontent.com/hk-0nl/host/main/hosting/dist/aidoku/sources/en.webnoveltranslations-v3.aix`
 - Wordrain69 v2: `https://raw.githubusercontent.com/hk-0nl/host/main/hosting/dist/aidoku/sources/en.wordrain69-v2.aix`
 - OPDS Catalog v6: `https://raw.githubusercontent.com/hk-0nl/host/main/hosting/dist/aidoku/sources/en.opds-v6.aix`
-- Kemono v3: `https://raw.githubusercontent.com/hk-0nl/host/main/hosting/dist/aidoku/sources/multi.kemono-v3.aix`
+- Kemono v4: `https://raw.githubusercontent.com/hk-0nl/host/main/hosting/dist/aidoku/sources/multi.kemono-v4.aix`
 
 Anna's Archive defaults to `annas-archive.gl`. Change the source settings to use `.li`, `.org`, `.se`, or a custom reachable mirror.
 
@@ -30,12 +30,14 @@ search across mounted feeds, explicit HTML catalog discovery, provider-advertise
 advanced search fields, richer acquisition metadata, and on-demand diagnostics.
 EPUB/PDF/CBZ/CBR decoding and local import remain host-application responsibilities.
 
-Kemono v2 provides public post discovery, popular and random listings, provider
-tag counts, service/creator/media filters, creator timelines, image/GIF/WebP
-previews, readable post information, dates, creator links, and explicit links
-for unsupported video/audio/archive attachments. Account mutations, private or
-paid content, archive extraction, and native video/audio reading are not
-included in this first public release.
+Kemono v4 provides public post, creator, service, tag, DM, popular, and random
+discovery; scoped service/creator/media filters; creator timelines; local saved
+searches; and authenticated provider favorites. Reader media uses compatible
+previews by default with optional original files, while video/audio/archive
+attachments retain explicit web fallbacks. V4 also repairs native Aidoku tag and
+artist routing, provider shard URLs, session-first mutations, and companion
+content duplication. Private or paid content, archive extraction, and native
+video/audio reading remain unsupported.
 
 Madokami v2 provides authenticated search, author/genre filters, metadata, chapters, image pages, and deep links for the private Madokami server. A valid Madokami Basic Auth account is required. The package and non-credential protocol boundary are verified; authenticated catalog and reader behavior require a credentialed device smoke.
 
