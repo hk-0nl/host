@@ -308,6 +308,19 @@
       "contentRating": 2,
       "baseURL": "https://kemono.cr",
       "minAppVersion": "0.8.3"
+    },
+    {
+      "id": "multi.newgrounds",
+      "name": "Newgrounds",
+      "version": 1,
+      "iconURL": "icons/multi.newgrounds-v1.png",
+      "downloadURL": "sources/multi.newgrounds-v1.aix",
+      "languages": [
+        "multi"
+      ],
+      "contentRating": 2,
+      "baseURL": "https://www.newgrounds.com",
+      "minAppVersion": "0.8.3"
     }
   ]
 }
