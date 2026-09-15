@@ -21,7 +21,7 @@ Current packages:
 - Wordrain69 v2: `https://raw.githubusercontent.com/hk-0nl/host/main/hosting/dist/aidoku/sources/en.wordrain69-v2.aix`
 - OPDS Catalog v6: `https://raw.githubusercontent.com/hk-0nl/host/main/hosting/dist/aidoku/sources/en.opds-v6.aix`
 - Kemono v6: `https://raw.githubusercontent.com/hk-0nl/host/main/hosting/dist/aidoku/sources/multi.kemono-v6.aix`
-- Newgrounds v1: `https://raw.githubusercontent.com/hk-0nl/host/main/hosting/dist/aidoku/sources/multi.newgrounds-v1.aix`
+- Newgrounds v2: `https://raw.githubusercontent.com/hk-0nl/host/main/hosting/dist/aidoku/sources/multi.newgrounds-v2.aix`
 
 Anna's Archive defaults to `annas-archive.gl`. Change the source settings to use `.li`, `.org`, `.se`, or a custom reachable mirror.
 
@@ -40,15 +40,16 @@ artist routing, provider shard URLs, session-first mutations, and companion
 content duplication. Private or paid content, archive extraction, and native
 video/audio reading remain unsupported.
 
-Newgrounds v1 provides Featured, Latest, Popular, Animated, and Comics art
+Newgrounds v2 provides Featured, Latest, Popular, Animated, and Comics art
 discovery plus Movie and Audio discovery; title, creator, tag, category, rating,
 date, animation, frontpage, field-match, and sort filters; rich submission
 metadata; static and multi-image art reading; medium/original image quality;
-deep links; and explicit Newgrounds handoffs for Movie and Audio playback. It
-uses a bounded WebView session because Newgrounds does not expose a public
-browsing API. If NG Guard persists, the source reports one verification action
-instead of repeatedly opening prompts. Account actions, uploads, and native
-video/audio playback are outside this intentionally limited first release.
+deep links; and explicit Newgrounds handoffs for Movie and Audio playback. Home
+now includes separate Art, Movie, and Audio sections. A configured profile adds
+paginated Favorite Art, Movie, and Audio listings, and a signed-in browser
+session enables account-gated submissions plus scoped add/remove favorite
+actions. It uses a bounded WebView session because Newgrounds does not expose a
+public browsing API. Uploads and native video/audio playback remain unsupported.
 
 Madokami v2 provides authenticated search, author/genre filters, metadata, chapters, image pages, and deep links for the private Madokami server. A valid Madokami Basic Auth account is required. The package and non-credential protocol boundary are verified; authenticated catalog and reader behavior require a credentialed device smoke.
 
