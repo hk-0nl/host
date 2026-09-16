@@ -21,7 +21,7 @@ Current packages:
 - Wordrain69 v2: `https://raw.githubusercontent.com/hk-0nl/host/main/hosting/dist/aidoku/sources/en.wordrain69-v2.aix`
 - OPDS Catalog v6: `https://raw.githubusercontent.com/hk-0nl/host/main/hosting/dist/aidoku/sources/en.opds-v6.aix`
 - Kemono v6: `https://raw.githubusercontent.com/hk-0nl/host/main/hosting/dist/aidoku/sources/multi.kemono-v6.aix`
-- Newgrounds v8: `https://raw.githubusercontent.com/hk-0nl/host/main/hosting/dist/aidoku/sources/multi.newgrounds-v8.aix`
+- Newgrounds v9: `https://raw.githubusercontent.com/hk-0nl/host/main/hosting/dist/aidoku/sources/multi.newgrounds-v9.aix`
 
 Anna's Archive defaults to `annas-archive.gl`. Change the source settings to use `.li`, `.org`, `.se`, or a custom reachable mirror.
 
@@ -40,7 +40,7 @@ artist routing, provider shard URLs, session-first mutations, and companion
 content duplication. Private or paid content, archive extraction, and native
 video/audio reading remain unsupported.
 
-Newgrounds v8 provides Featured, Latest, Popular, Animated, and Comics art
+Newgrounds v9 provides Featured, Latest, Popular, Animated, and Comics art
 discovery plus Movie, Game, Collection, Forum, Artist News, and Audio discovery;
 title, creator, tag, category, rating,
 date, animation, frontpage, field-match, and sort filters; rich submission
@@ -50,16 +50,19 @@ Collections use Newgrounds' first-party visual-link endpoint for sleeves, author
 descriptions, and an in-source paged entry index. Community cards expose readable
 topic/post details and provider handoffs. Home includes separate Art, Movie,
 Game, and Audio sections plus links to the heavier Collection and Community
-listings. A configured profile adds paginated Favorite Art, Movie, and Audio
+listings. A configured profile adds paginated Favorite Art, Movie, Game, and Audio
 listings, and a signed-in browser
 session enables account-gated submissions plus scoped add/remove favorite
-actions using Newgrounds' current rendered provider forms and captured session cookies. V4 captures parent-domain browser
+actions using Newgrounds' current rendered provider forms inside the authenticated source WebView. V4 captures parent-domain browser
 cookies and validates an authenticated provider page before closing or persisting the
 login sheet. V5 keeps free-text and provider tags separate, supports comma-separated
 multi-tag filters, and uses fast native HTML requests before falling back to the bounded
 WebView for NG Guard. V6 captures Newgrounds' own rendered favorite request contract
 before replaying it with the persisted account session. V7 also forwards the page-specific
-CSRF request header required by Newgrounds' same-site AJAX prefilter. Local saved searches retain
+CSRF request header required by Newgrounds' same-site AJAX prefilter. V9 keeps
+dead or removed links out of the WebView fallback, adds isolated Collection,
+Forum, and Artist News search scopes, reads full forum pages and news comments,
+and exposes public Favorite Games. Local saved searches retain
 the full query and filter expression and are available from Home, a dedicated
 listing, search utility items, and source settings. Aidoku's external
 browser has a separate cookie store, so browser handoffs may require another sign-in.
