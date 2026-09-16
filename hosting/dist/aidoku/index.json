@@ -312,15 +312,15 @@
     {
       "id": "multi.newgrounds",
       "name": "Newgrounds",
-      "version": 2,
+      "version": 3,
       "iconURL": "icons/multi.newgrounds-v1.png",
-      "downloadURL": "sources/multi.newgrounds-v2.aix",
+      "downloadURL": "sources/multi.newgrounds-v3.aix",
       "languages": [
         "multi"
       ],
       "contentRating": 2,
       "baseURL": "https://www.newgrounds.com",
-      "minAppVersion": "0.8.3"
+      "minAppVersion": "0.8.4"
     }
   ]
 }
