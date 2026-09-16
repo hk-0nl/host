@@ -21,7 +21,7 @@ Current packages:
 - Wordrain69 v2: `https://raw.githubusercontent.com/hk-0nl/host/main/hosting/dist/aidoku/sources/en.wordrain69-v2.aix`
 - OPDS Catalog v6: `https://raw.githubusercontent.com/hk-0nl/host/main/hosting/dist/aidoku/sources/en.opds-v6.aix`
 - Kemono v6: `https://raw.githubusercontent.com/hk-0nl/host/main/hosting/dist/aidoku/sources/multi.kemono-v6.aix`
-- Newgrounds v6: `https://raw.githubusercontent.com/hk-0nl/host/main/hosting/dist/aidoku/sources/multi.newgrounds-v6.aix`
+- Newgrounds v7: `https://raw.githubusercontent.com/hk-0nl/host/main/hosting/dist/aidoku/sources/multi.newgrounds-v7.aix`
 
 Anna's Archive defaults to `annas-archive.gl`. Change the source settings to use `.li`, `.org`, `.se`, or a custom reachable mirror.
 
@@ -40,7 +40,7 @@ artist routing, provider shard URLs, session-first mutations, and companion
 content duplication. Private or paid content, archive extraction, and native
 video/audio reading remain unsupported.
 
-Newgrounds v6 provides Featured, Latest, Popular, Animated, and Comics art
+Newgrounds v7 provides Featured, Latest, Popular, Animated, and Comics art
 discovery plus Movie and Audio discovery; title, creator, tag, category, rating,
 date, animation, frontpage, field-match, and sort filters; rich submission
 metadata; static and multi-image art reading; medium/original image quality;
@@ -53,7 +53,8 @@ cookies and validates an authenticated provider page before closing or persistin
 login sheet. V5 keeps free-text and provider tags separate, supports comma-separated
 multi-tag filters, and uses fast native HTML requests before falling back to the bounded
 WebView for NG Guard. V6 captures Newgrounds' own rendered favorite request contract
-before replaying it with the persisted account session. Local saved searches retain
+before replaying it with the persisted account session. V7 also forwards the page-specific
+CSRF request header required by Newgrounds' same-site AJAX prefilter. Local saved searches retain
 the full query and filter expression and are available from Home, a dedicated
 listing, search utility items, and source settings. Aidoku's external
 browser has a separate cookie store, so browser handoffs may require another sign-in.

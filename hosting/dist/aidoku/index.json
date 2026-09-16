@@ -312,9 +312,9 @@
     {
       "id": "multi.newgrounds",
       "name": "Newgrounds",
-      "version": 6,
+      "version": 7,
       "iconURL": "icons/multi.newgrounds-v1.png",
-      "downloadURL": "sources/multi.newgrounds-v6.aix",
+      "downloadURL": "sources/multi.newgrounds-v7.aix",
       "languages": [
         "multi"
       ],
