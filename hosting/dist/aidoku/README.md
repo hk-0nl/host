@@ -62,10 +62,12 @@ before replaying it with the persisted account session. V7 also forwards the pag
 CSRF request header required by Newgrounds' same-site AJAX prefilter. V9 keeps
 dead or removed links out of the WebView fallback, adds isolated Collection,
 Forum, and Artist News search scopes, reads full forum pages and news comments,
-and exposes public Favorite Games. V10 treats the provider's matching successful
-favorite AJAX completion as authoritative, bounds and resets the hidden action
+and exposes public Favorite Games. V10 bounds and resets the hidden action
 WebView on every outcome, discovers long forum page counts from provider
 pagination text, and splits oversized forum/news posts into bounded reader pages.
+V11 observes the provider's own `ajaxSubmit` success and error callbacks instead
+of relying on document-level AJAX events, so account actions receive the exact
+completion result from the authenticated source WebView.
 Local saved searches retain
 the full query and filter expression and are available from Home, a dedicated
 listing, search utility items, and source settings. Aidoku's external
@@ -80,7 +82,7 @@ Royal Road v2 provides nine discovery listings, a multi-section Home, title/keyw
 
 Gelbooru v50 provides signed-out search/filters; Latest and all-time Overall/Static/Animated discovery; Top Tags; categorized metadata; static/GIF/WebP image pages; explicit WebM/MP4 web handoff; Comments full-post discovery; distinct family, relationship-pool, and Similar Posts navigation; readable tags; optional family-as-chapters; saved searches; Favorites; and account/session controls. Saved-search chapters include bounded Gelbooru Tag Wiki help. V50 preserves provider-visible HTTP(S) labels and sends inline and See Also tag links to their Gelbooru wiki pages; stock Aidoku opens those links in Safari in scroll mode and leaves them inert in paged text. The reader browser button still opens the exact saved-search post listing. Website-session and DAPI features remain separate, and account mutations report provider results rather than claiming offline success.
 
-E-Hentai v10 keeps v9's split-gallery caching, bounded fallback range loading, timeout protection, ExHentai session priming, and selected-domain actions. It fixes the account-backed cold-load path by allowing split chapters to use MPV and persist one compact image-key manifest shared across every chunk; reopening or switching chunks no longer requires a separate Lo-Fi index crawl once that manifest is warm. Signed-out galleries retain bounded per-range caches. V9 remains available for rollback. Seventeen tests, including live public gallery checks and a 2,000-page shared-manifest regression, plus all Aidoku package/schema gates pass. Credentialed ExHentai MPV persistence still requires device validation.
+E-Hentai v11 keeps v10's split-gallery caching, timeout protection, ExHentai session priming, and selected-domain actions. Accounts with Gold Star or the Multi-Page Viewer Hath perk still use one compact MPV manifest. Because ordinary credentials do not unlock MPV, the default fallback now builds and persists one full-gallery Lo-Fi manifest so every split chapter becomes warm after the initial crawl. A Range Only setting retains the lower-cost per-chunk behavior. Eighteen tests, including live public gallery checks and a 2,000-page persistence regression, plus all Aidoku package/schema gates pass. V10 remains available for rollback.
 
 Hitomi v3 provides recent/popular listings, text and creator/tag/type filters, rich gallery metadata, current `gg.js` image routing, language settings, and deep links. Its package metadata now declares the Aidoku 0.7.1 minimum required by its WASM API.
 
