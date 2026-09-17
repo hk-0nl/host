@@ -21,7 +21,7 @@ Current packages:
 - Wordrain69 v2: `https://raw.githubusercontent.com/hk-0nl/host/main/hosting/dist/aidoku/sources/en.wordrain69-v2.aix`
 - OPDS Catalog v6: `https://raw.githubusercontent.com/hk-0nl/host/main/hosting/dist/aidoku/sources/en.opds-v6.aix`
 - Kemono v6: `https://raw.githubusercontent.com/hk-0nl/host/main/hosting/dist/aidoku/sources/multi.kemono-v6.aix`
-- Newgrounds v9: `https://raw.githubusercontent.com/hk-0nl/host/main/hosting/dist/aidoku/sources/multi.newgrounds-v9.aix`
+- Newgrounds v10: `https://raw.githubusercontent.com/hk-0nl/host/main/hosting/dist/aidoku/sources/multi.newgrounds-v10.aix`
 
 Anna's Archive defaults to `annas-archive.gl`. Change the source settings to use `.li`, `.org`, `.se`, or a custom reachable mirror.
 
@@ -40,7 +40,7 @@ artist routing, provider shard URLs, session-first mutations, and companion
 content duplication. Private or paid content, archive extraction, and native
 video/audio reading remain unsupported.
 
-Newgrounds v9 provides Featured, Latest, Popular, Animated, and Comics art
+Newgrounds v10 provides Featured, Latest, Popular, Animated, and Comics art
 discovery plus Movie, Game, Collection, Forum, Artist News, and Audio discovery;
 title, creator, tag, category, rating,
 date, animation, frontpage, field-match, and sort filters; rich submission
@@ -62,7 +62,11 @@ before replaying it with the persisted account session. V7 also forwards the pag
 CSRF request header required by Newgrounds' same-site AJAX prefilter. V9 keeps
 dead or removed links out of the WebView fallback, adds isolated Collection,
 Forum, and Artist News search scopes, reads full forum pages and news comments,
-and exposes public Favorite Games. Local saved searches retain
+and exposes public Favorite Games. V10 treats the provider's matching successful
+favorite AJAX completion as authoritative, bounds and resets the hidden action
+WebView on every outcome, discovers long forum page counts from provider
+pagination text, and splits oversized forum/news posts into bounded reader pages.
+Local saved searches retain
 the full query and filter expression and are available from Home, a dedicated
 listing, search utility items, and source settings. Aidoku's external
 browser has a separate cookie store, so browser handoffs may require another sign-in.
