@@ -12,7 +12,7 @@ Current packages:
 - NovelFire v1: `https://raw.githubusercontent.com/hk-0nl/host/main/hosting/dist/aidoku/sources/en.novelfire-v1.aix`
 - Royal Road v2: `https://raw.githubusercontent.com/hk-0nl/host/main/hosting/dist/aidoku/sources/en.royalroad-v2.aix`
 - Gelbooru v50: `https://raw.githubusercontent.com/hk-0nl/host/main/hosting/dist/aidoku/sources/multi.gelbooru-v50.aix`
-- E-Hentai v12: `https://raw.githubusercontent.com/hk-0nl/host/main/hosting/dist/aidoku/sources/multi.ehentai-v12.aix`
+- E-Hentai v13: `https://raw.githubusercontent.com/hk-0nl/host/main/hosting/dist/aidoku/sources/multi.ehentai-v13.aix`
 - Hitomi v3: `https://raw.githubusercontent.com/hk-0nl/host/main/hosting/dist/aidoku/sources/multi.hitomi-v3.aix`
 - nhentai v26: `https://raw.githubusercontent.com/hk-0nl/host/main/hosting/dist/aidoku/sources/multi.nhentai-v26.aix`
 - BookReadFree v2: `https://raw.githubusercontent.com/hk-0nl/host/main/hosting/dist/aidoku/sources/en.bookreadfree-v2.aix`
@@ -21,7 +21,7 @@ Current packages:
 - Wordrain69 v2: `https://raw.githubusercontent.com/hk-0nl/host/main/hosting/dist/aidoku/sources/en.wordrain69-v2.aix`
 - OPDS Catalog v6: `https://raw.githubusercontent.com/hk-0nl/host/main/hosting/dist/aidoku/sources/en.opds-v6.aix`
 - Kemono v6: `https://raw.githubusercontent.com/hk-0nl/host/main/hosting/dist/aidoku/sources/multi.kemono-v6.aix`
-- Newgrounds v12: `https://raw.githubusercontent.com/hk-0nl/host/main/hosting/dist/aidoku/sources/multi.newgrounds-v12.aix`
+- Newgrounds v13: `https://raw.githubusercontent.com/hk-0nl/host/main/hosting/dist/aidoku/sources/multi.newgrounds-v13.aix`
 
 Anna's Archive defaults to `annas-archive.gl`. Change the source settings to use `.li`, `.org`, `.se`, or a custom reachable mirror.
 
@@ -40,7 +40,7 @@ artist routing, provider shard URLs, session-first mutations, and companion
 content duplication. Private or paid content, archive extraction, and native
 video/audio reading remain unsupported.
 
-Newgrounds v12 provides Featured, Latest, Popular, Animated, and Comics art
+Newgrounds v13 provides Featured, Latest, Popular, Animated, and Comics art
 discovery plus Movie, Game, Collection, Forum, Artist News, and Audio discovery;
 title, creator, tag, category, rating,
 date, animation, frontpage, field-match, and sort filters; rich submission
@@ -70,7 +70,9 @@ of relying on document-level AJAX events, so account actions receive the exact
 completion result from the authenticated source WebView. V12 invokes that
 first-party helper directly on the selected rendered form, avoiding a jQuery
 instance mismatch while preserving provider serialization, session cookies,
-and actionable provider errors.
+and actionable provider errors. V13 selects only the rendered form bound to
+Newgrounds' actual `NgFavorites` handler while explicitly excluding review forms,
+preventing favorite actions from submitting the review agreement workflow.
 Local saved searches retain
 the full query and filter expression and are available from Home, a dedicated
 listing, search utility items, and source settings. Aidoku's external
@@ -85,7 +87,7 @@ Royal Road v2 provides nine discovery listings, a multi-section Home, title/keyw
 
 Gelbooru v50 provides signed-out search/filters; Latest and all-time Overall/Static/Animated discovery; Top Tags; categorized metadata; static/GIF/WebP image pages; explicit WebM/MP4 web handoff; Comments full-post discovery; distinct family, relationship-pool, and Similar Posts navigation; readable tags; optional family-as-chapters; saved searches; Favorites; and account/session controls. Saved-search chapters include bounded Gelbooru Tag Wiki help. V50 preserves provider-visible HTTP(S) labels and sends inline and See Also tag links to their Gelbooru wiki pages; stock Aidoku opens those links in Safari in scroll mode and leaves them inert in paged text. The reader browser button still opens the exact saved-search post listing. Website-session and DAPI features remain separate, and account mutations report provider results rather than claiming offline success.
 
-E-Hentai v12 keeps v11's split-gallery caching, timeout protection, ExHentai session priming, and selected-domain actions. Accounts with Gold Star or the Multi-Page Viewer Hath perk still use one compact MPV manifest. Because ordinary credentials do not unlock MPV, the default fallback builds and persists one full-gallery Lo-Fi manifest so every split chapter becomes warm after the initial crawl. V12 carries the gallery total in split chapter keys, recovers it from existing chapter metadata or a one-time detail request, and prevents stale range caches from masking Full Gallery mode. A Range Only setting retains the lower-cost per-chunk behavior. Nineteen tests, including live public gallery checks and a 2,000-page persistence regression, plus all Aidoku package/schema gates pass. V11 remains available for rollback.
+E-Hentai v13 keeps v12's split-gallery caching, timeout protection, ExHentai session priming, and selected-domain actions. Accounts with Gold Star or the Multi-Page Viewer Hath perk still use one compact MPV manifest. Because ordinary credentials do not unlock MPV, the default fallback builds and persists one full-gallery Lo-Fi manifest so every split chapter becomes warm after the initial crawl. V13 stores large manifests in bounded 250-entry defaults chunks, validates complete provider page counts, falls back to standard gallery pagination when Lo-Fi construction fails, and reports the exact Full Gallery failure instead of silently presenting a range cache as success. A Range Only setting retains the lower-cost per-chunk behavior. Nineteen deterministic tests, a live 1,256-page full-manifest crawl, and all Aidoku package/schema gates pass. V12 remains available for rollback.
 
 Hitomi v3 provides recent/popular listings, text and creator/tag/type filters, rich gallery metadata, current `gg.js` image routing, language settings, and deep links. Its package metadata now declares the Aidoku 0.7.1 minimum required by its WASM API.
 

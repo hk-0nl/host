@@ -152,9 +152,9 @@
     {
       "id": "multi.ehentai",
       "name": "E-Hentai",
-      "version": 12,
+      "version": 13,
       "iconURL": "icons/multi.ehentai-v4.png",
-      "downloadURL": "sources/multi.ehentai-v12.aix",
+      "downloadURL": "sources/multi.ehentai-v13.aix",
       "languages": [
         "All",
         "ja",
@@ -312,9 +312,9 @@
     {
       "id": "multi.newgrounds",
       "name": "Newgrounds",
-      "version": 12,
+      "version": 13,
       "iconURL": "icons/multi.newgrounds-v1.png",
-      "downloadURL": "sources/multi.newgrounds-v12.aix",
+      "downloadURL": "sources/multi.newgrounds-v13.aix",
       "languages": [
         "multi"
       ],
