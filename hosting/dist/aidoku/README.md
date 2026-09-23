@@ -21,7 +21,7 @@ Current packages:
 - Wordrain69 v2: `https://raw.githubusercontent.com/hk-0nl/host/main/hosting/dist/aidoku/sources/en.wordrain69-v2.aix`
 - OPDS Catalog v6: `https://raw.githubusercontent.com/hk-0nl/host/main/hosting/dist/aidoku/sources/en.opds-v6.aix`
 - Kemono v6: `https://raw.githubusercontent.com/hk-0nl/host/main/hosting/dist/aidoku/sources/multi.kemono-v6.aix`
-- Newgrounds v13: `https://raw.githubusercontent.com/hk-0nl/host/main/hosting/dist/aidoku/sources/multi.newgrounds-v13.aix`
+- Newgrounds v14: `https://raw.githubusercontent.com/hk-0nl/host/main/hosting/dist/aidoku/sources/multi.newgrounds-v14.aix`
 
 Anna's Archive defaults to `annas-archive.gl`. Change the source settings to use `.li`, `.org`, `.se`, or a custom reachable mirror.
 
@@ -73,6 +73,9 @@ instance mismatch while preserving provider serialization, session cookies,
 and actionable provider errors. V13 selects only the rendered form bound to
 Newgrounds' actual `NgFavorites` handler while explicitly excluding review forms,
 preventing favorite actions from submitting the review agreement workflow.
+V14 uses Newgrounds' current favorite widget on the authenticated submission
+page and confirms the returned favorite state. Favorite target links are
+restricted to Newgrounds submission URLs before the source forwards cookies.
 Local saved searches retain
 the full query and filter expression and are available from Home, a dedicated
 listing, search utility items, and source settings. Aidoku's external
