@@ -11,7 +11,7 @@ Current packages:
 - NovelUpdates v21: `https://raw.githubusercontent.com/hk-0nl/host/main/hosting/dist/aidoku/sources/en.novelupdates-v21.aix`
 - NovelFire v1: `https://raw.githubusercontent.com/hk-0nl/host/main/hosting/dist/aidoku/sources/en.novelfire-v1.aix`
 - Royal Road v2: `https://raw.githubusercontent.com/hk-0nl/host/main/hosting/dist/aidoku/sources/en.royalroad-v2.aix`
-- Gelbooru v50: `https://raw.githubusercontent.com/hk-0nl/host/main/hosting/dist/aidoku/sources/multi.gelbooru-v50.aix`
+- Gelbooru v69: `https://raw.githubusercontent.com/hk-0nl/host/main/hosting/dist/aidoku/sources/multi.gelbooru-v69.aix`
 - E-Hentai v13: `https://raw.githubusercontent.com/hk-0nl/host/main/hosting/dist/aidoku/sources/multi.ehentai-v13.aix`
 - Hitomi v3: `https://raw.githubusercontent.com/hk-0nl/host/main/hosting/dist/aidoku/sources/multi.hitomi-v3.aix`
 - nhentai v26: `https://raw.githubusercontent.com/hk-0nl/host/main/hosting/dist/aidoku/sources/multi.nhentai-v26.aix`
@@ -99,6 +99,11 @@ NovelFire v1 provides Popular, Ranking, Latest Releases, Recently Updated, New, 
 Royal Road v2 provides nine discovery listings, a multi-section Home, title/keyword/author search, include/exclude tags, status/type/page/rating/sort filters, rich fiction metadata, dated English chapter titles, public text reading, and deep links. Search-backed discovery fallbacks keep listings and Home populated when Royal Road's canonical listing routes are unavailable. Account follows, favorites, notifications, and other mutations are not supported.
 
 Gelbooru v50 provides signed-out search/filters; Latest and all-time Overall/Static/Animated discovery; Top Tags; categorized metadata; static/GIF/WebP image pages; explicit WebM/MP4 web handoff; Comments full-post discovery; distinct family, relationship-pool, and Similar Posts navigation; readable tags; optional family-as-chapters; saved searches; Favorites; and account/session controls. Saved-search chapters include bounded Gelbooru Tag Wiki help. V50 preserves provider-visible HTTP(S) labels and sends inline and See Also tag links to their Gelbooru wiki pages; stock Aidoku opens those links in Safari in scroll mode and leaves them inert in paged text. The reader browser button still opens the exact saved-search post listing. Website-session and DAPI features remain separate, and account mutations report provider results rather than claiming offline success.
+
+Gelbooru v69 adds an opt-in Oldest search sort using the provider's documented
+`sort:id:asc` token. Existing sort choices and defaults are unchanged. The
+50-test WASM suite and package/schema checks pass; on-device result order is
+the remaining check. V68 remains available for rollback.
 
 E-Hentai v13 keeps v12's split-gallery caching, timeout protection, ExHentai session priming, and selected-domain actions. Accounts with Gold Star or the Multi-Page Viewer Hath perk still use one compact MPV manifest. Because ordinary credentials do not unlock MPV, the default fallback builds and persists one full-gallery Lo-Fi manifest so every split chapter becomes warm after the initial crawl. V13 stores large manifests in bounded 250-entry defaults chunks, validates complete provider page counts, falls back to standard gallery pagination when Lo-Fi construction fails, and reports the exact Full Gallery failure instead of silently presenting a range cache as success. A Range Only setting retains the lower-cost per-chunk behavior. Nineteen deterministic tests, a live 1,256-page full-manifest crawl, and all Aidoku package/schema gates pass. V12 remains available for rollback.
 
