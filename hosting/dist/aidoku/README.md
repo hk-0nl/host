@@ -22,6 +22,7 @@ Current packages:
 - OPDS Catalog v6: `https://raw.githubusercontent.com/hk-0nl/host/main/hosting/dist/aidoku/sources/en.opds-v6.aix`
 - Kemono v6: `https://raw.githubusercontent.com/hk-0nl/host/main/hosting/dist/aidoku/sources/multi.kemono-v6.aix`
 - Newgrounds v15: `https://raw.githubusercontent.com/hk-0nl/host/main/hosting/dist/aidoku/sources/multi.newgrounds-v15.aix`
+- Danbooru v23: `https://raw.githubusercontent.com/hk-0nl/host/main/hosting/dist/aidoku/sources/multi.danbooru-v23.aix`
 
 Anna's Archive defaults to `annas-archive.gl`. Change the source settings to use `.li`, `.org`, `.se`, or a custom reachable mirror.
 
@@ -84,6 +85,12 @@ the full query and filter expression and are available from Home, a dedicated
 listing, search utility items, and source settings. Aidoku's external
 browser has a separate cookie store, so browser handoffs may require another sign-in.
 Uploads and native video/audio playback remain unsupported.
+
+Danbooru v23 adds opt-in Oldest and Score Low (Last Month) search sorts while
+keeping the existing sort choices unchanged. Query-builder and free-tier budget
+tests pass; provider result ordering still needs an on-device check because
+workstation requests to the posts API receive Cloudflare responses. V22 remains
+available for rollback.
 
 Madokami v2 provides authenticated search, author/genre filters, metadata, chapters, image pages, and deep links for the private Madokami server. A valid Madokami Basic Auth account is required. The package and non-credential protocol boundary are verified; authenticated catalog and reader behavior require a credentialed device smoke.
 

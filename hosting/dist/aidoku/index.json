@@ -127,9 +127,9 @@
     {
       "id": "multi.danbooru",
       "name": "Danbooru",
-      "version": 22,
+      "version": 23,
       "iconURL": "icons/multi.danbooru-v1.png",
-      "downloadURL": "sources/multi.danbooru-v22.aix",
+      "downloadURL": "sources/multi.danbooru-v23.aix",
       "languages": [
         "All",
         "en",
