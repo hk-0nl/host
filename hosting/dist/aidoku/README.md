@@ -11,7 +11,7 @@ Current packages:
 - NovelUpdates v21: `https://raw.githubusercontent.com/hk-0nl/host/main/hosting/dist/aidoku/sources/en.novelupdates-v21.aix`
 - NovelFire v1: `https://raw.githubusercontent.com/hk-0nl/host/main/hosting/dist/aidoku/sources/en.novelfire-v1.aix`
 - Royal Road v2: `https://raw.githubusercontent.com/hk-0nl/host/main/hosting/dist/aidoku/sources/en.royalroad-v2.aix`
-- Gelbooru v69: `https://raw.githubusercontent.com/hk-0nl/host/main/hosting/dist/aidoku/sources/multi.gelbooru-v69.aix`
+- Gelbooru v70: `https://raw.githubusercontent.com/hk-0nl/host/main/hosting/dist/aidoku/sources/multi.gelbooru-v70.aix`
 - E-Hentai v13: `https://raw.githubusercontent.com/hk-0nl/host/main/hosting/dist/aidoku/sources/multi.ehentai-v13.aix`
 - Hitomi v3: `https://raw.githubusercontent.com/hk-0nl/host/main/hosting/dist/aidoku/sources/multi.hitomi-v3.aix`
 - nhentai v26: `https://raw.githubusercontent.com/hk-0nl/host/main/hosting/dist/aidoku/sources/multi.nhentai-v26.aix`
@@ -104,6 +104,14 @@ Gelbooru v69 adds an opt-in Oldest search sort using the provider's documented
 `sort:id:asc` token. Existing sort choices and defaults are unchanged. The
 50-test WASM suite and package/schema checks pass; on-device result order is
 the remaining check. V68 remains available for rollback.
+
+Gelbooru v70 adds an Advanced Query filter that passes raw provider syntax,
+including `{blue_hair ~ red_hair}` for ordinary-tag OR. Saved searches retain
+the exact expression, use it as the label instead of splitting group syntax,
+and keep only real tags in native tag/wiki lists. A live two-page source test
+checks OR membership and distinct pagination; the 51-test WASM suite passes.
+Native on-device filter and account-backed saved-search checks remain.
+V69 remains available for rollback.
 
 E-Hentai v13 keeps v12's split-gallery caching, timeout protection, ExHentai session priming, and selected-domain actions. Accounts with Gold Star or the Multi-Page Viewer Hath perk still use one compact MPV manifest. Because ordinary credentials do not unlock MPV, the default fallback builds and persists one full-gallery Lo-Fi manifest so every split chapter becomes warm after the initial crawl. V13 stores large manifests in bounded 250-entry defaults chunks, validates complete provider page counts, falls back to standard gallery pagination when Lo-Fi construction fails, and reports the exact Full Gallery failure instead of silently presenting a range cache as success. A Range Only setting retains the lower-cost per-chunk behavior. Nineteen deterministic tests, a live 1,256-page full-manifest crawl, and all Aidoku package/schema gates pass. V12 remains available for rollback.
 
