@@ -4,9 +4,9 @@
     {
       "id": "en.annasarchive",
       "name": "Anna's Archive",
-      "version": 8,
+      "version": 9,
       "iconURL": "icons/en.annasarchive-v5.png",
-      "downloadURL": "sources/en.annasarchive-v8.aix",
+      "downloadURL": "sources/en.annasarchive-v9.aix",
       "languages": [
         "en"
       ],
