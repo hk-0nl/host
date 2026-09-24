@@ -21,7 +21,7 @@ Current packages:
 - Wordrain69 v2: `https://raw.githubusercontent.com/hk-0nl/host/main/hosting/dist/aidoku/sources/en.wordrain69-v2.aix`
 - OPDS Catalog v6: `https://raw.githubusercontent.com/hk-0nl/host/main/hosting/dist/aidoku/sources/en.opds-v6.aix`
 - Kemono v6: `https://raw.githubusercontent.com/hk-0nl/host/main/hosting/dist/aidoku/sources/multi.kemono-v6.aix`
-- Newgrounds v15: `https://raw.githubusercontent.com/hk-0nl/host/main/hosting/dist/aidoku/sources/multi.newgrounds-v15.aix`
+- Newgrounds v16: `https://raw.githubusercontent.com/hk-0nl/host/main/hosting/dist/aidoku/sources/multi.newgrounds-v16.aix`
 - Danbooru v23: `https://raw.githubusercontent.com/hk-0nl/host/main/hosting/dist/aidoku/sources/multi.danbooru-v23.aix`
 
 Anna's Archive defaults to `annas-archive.gl`. Change the source settings to use `.li`, `.org`, `.se`, or a custom reachable mirror.
@@ -80,6 +80,8 @@ restricted to Newgrounds submission URLs before the source forwards cookies.
 V15 adds creator Follow/Unfollow links to signed-in submission details using
 the first-party follow widget. It requires a single matching creator control
 and confirms the provider's returned active state before reporting success.
+V16 also displays Follow/Unfollow when the fetched public page appears signed out;
+the action still checks the authenticated WebView session before changing state.
 Local saved searches retain
 the full query and filter expression and are available from Home, a dedicated
 listing, search utility items, and source settings. Aidoku's external
