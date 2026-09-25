@@ -4,9 +4,9 @@
     {
       "id": "en.annasarchive",
       "name": "Anna's Archive",
-      "version": 9,
+      "version": 10,
       "iconURL": "icons/en.annasarchive-v5.png",
-      "downloadURL": "sources/en.annasarchive-v9.aix",
+      "downloadURL": "sources/en.annasarchive-v10.aix",
       "languages": [
         "en"
       ],
@@ -312,9 +312,9 @@
     {
       "id": "multi.newgrounds",
       "name": "Newgrounds",
-      "version": 17,
+      "version": 18,
       "iconURL": "icons/multi.newgrounds-v1.png",
-      "downloadURL": "sources/multi.newgrounds-v17.aix",
+      "downloadURL": "sources/multi.newgrounds-v18.aix",
       "languages": [
         "multi"
       ],
