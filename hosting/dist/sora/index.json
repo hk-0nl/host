@@ -1,7 +1,16 @@
 {
-  "updated": "2026-07-01",
-  "note": "Sora modules install individually by raw JSON URL. PH Stream is search/metadata only; direct streams are not implemented.",
+  "updated": "2026-09-27",
+  "note": "Sora modules install individually by raw JSON URL. AnimePahe 1.2.8 is a Shirox 1.0.6 WebView-session maintenance candidate pending device verification. PH Stream is search/metadata only; direct streams are not implemented.",
   "modules": [
+    {
+      "id": "animepahe",
+      "sourceName": "Animepahe (SUB)",
+      "version": "1.2.8",
+      "installUrl": "https://raw.githubusercontent.com/hk-0nl/host/main/hosting/dist/sora/modules/animepahe/animepahe.json",
+      "scriptUrl": "https://raw.githubusercontent.com/hk-0nl/host/main/hosting/dist/sora/modules/animepahe/animepahe.js",
+      "devStatus": "maintenance-candidate-device-test-required",
+      "rollbackUrl": "https://git.luna-app.eu/ibro/services/raw/branch/main/animepahe/animepahe.json"
+    },
     {
       "id": "ph-stream",
       "sourceName": "PH Stream",
