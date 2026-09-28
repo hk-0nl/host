@@ -7,6 +7,7 @@ Install the source list in Aidoku:
 Current packages:
 
 - Anna's Archive v14 (device verification): `https://raw.githubusercontent.com/hk-0nl/host/main/hosting/dist/aidoku/sources/en.annasarchive-v14.aix`
+- Comix v53: `https://raw.githubusercontent.com/hk-0nl/host/main/hosting/dist/aidoku/sources/en.comix-v53.aix`
 - Madokami v2: `https://raw.githubusercontent.com/hk-0nl/host/main/hosting/dist/aidoku/sources/en.madokami-v2.aix`
 - NovelUpdates v21: `https://raw.githubusercontent.com/hk-0nl/host/main/hosting/dist/aidoku/sources/en.novelupdates-v21.aix`
 - NovelFire v1: `https://raw.githubusercontent.com/hk-0nl/host/main/hosting/dist/aidoku/sources/en.novelfire-v1.aix`
@@ -25,6 +26,14 @@ Current packages:
 - Danbooru v23: `https://raw.githubusercontent.com/hk-0nl/host/main/hosting/dist/aidoku/sources/multi.danbooru-v23.aix`
 
 Anna's Archive defaults to `annas-archive.gl`. Change the source settings to use `.li`, `.org`, `.se`, or a custom reachable mirror.
+
+Comix v53 initializes only the provider's secure API module, without starting
+the full website in the hidden helper WebView. Details first use the title's
+server-rendered JSON state, with signed API fallback. Native API requests have
+bounded timeouts, and repeated chapter pages stop with an actionable error.
+Twenty-one deterministic WASM tests, a live title-hydration test, release build,
+and package checks pass. Device verification persistence and loading latency
+remain to be checked; v52 is retained for rollback.
 
 OPDS Catalog v6 supports OPDS 1.x/2.x navigation, facets, ordered publication
 resources, an editable list of feed roots, bounded Combined browsing, optional
