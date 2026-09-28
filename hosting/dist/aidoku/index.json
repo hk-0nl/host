@@ -4,9 +4,9 @@
     {
       "id": "en.annasarchive",
       "name": "Anna's Archive",
-      "version": 14,
+      "version": 15,
       "iconURL": "icons/en.annasarchive-v5.png",
-      "downloadURL": "sources/en.annasarchive-v14.aix",
+      "downloadURL": "sources/en.annasarchive-v15.aix",
       "languages": [
         "en"
       ],
@@ -30,9 +30,9 @@
     {
       "id": "en.comix",
       "name": "Comix",
-      "version": 53,
+      "version": 54,
       "iconURL": "icons/en.comix-v51.png",
-      "downloadURL": "sources/en.comix-v53.aix",
+      "downloadURL": "sources/en.comix-v54.aix",
       "languages": [
         "en"
       ],
