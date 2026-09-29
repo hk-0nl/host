@@ -1,0 +1,20 @@
+{
+    "sourceName": "Animepahe (Paul test)",
+    "iconUrl": "https://git.luna-app.eu/ibro/services/raw/branch/main/animepahe/icon.png",
+    "author": {
+        "name": "ibro",
+        "icon": "https://git.luna-app.eu/ibro/services/raw/branch/main/profile.jpg",
+        "url": "https://github.com/xibrox"
+    },
+    "version": "1.0.5",
+    "language": "English",
+    "streamType": "HLS",
+    "quality": "1080p",
+    "baseUrl": "https://animepahe.com/",
+    "searchBaseUrl": "https://animepahe.com/search?query=%s",
+    "scriptUrl": "https://raw.githubusercontent.com/hk-0nl/host/main/hosting/dist/sora/modules/animepahe/paul/animepahe_paul.js",
+    "type": "anime",
+    "downloadSupport": true,
+    "asyncJS": true,
+    "softsub": true
+}
