@@ -1,11 +1,11 @@
 {
-  "updated": "2026-09-30",
+  "updated": "2026-10-01",
   "note": "Sora modules install individually by raw JSON URL. AnimePahe 1.2.8 is a Shirox 1.0.6 WebView-session maintenance candidate pending device verification. PH Stream is search/metadata only; direct streams are not implemented.",
   "modules": [
     {
       "id": "animepahe-paul",
       "sourceName": "Animepahe (Paul test)",
-      "version": "1.0.8",
+      "version": "1.0.9",
       "installUrl": "https://raw.githubusercontent.com/hk-0nl/host/main/hosting/dist/sora/modules/animepahe/paul/animepahe_paul.json",
       "scriptUrl": "https://raw.githubusercontent.com/hk-0nl/host/main/hosting/dist/sora/modules/animepahe/paul/animepahe_paul.js",
       "devStatus": "host-session-alignment-device-test-required",
