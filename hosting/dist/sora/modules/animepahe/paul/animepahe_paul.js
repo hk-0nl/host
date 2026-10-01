@@ -1,8 +1,15 @@
+const ANIMEPAHE_BASE_URL = "https://animepahe.pw";
+
+function canonicalAnimepaheUrl(url) {
+    // Keep initial request, verification and app-owned cookie lookup on one host.
+    return url.replace(/^https?:\/\/animepahe\.(?:com|pw)(?=\/|[?#]|$)/i, ANIMEPAHE_BASE_URL);
+}
+
 async function searchResults(keyword) {
     try {
         const encodedKeyword = encodeURIComponent(keyword);
         const ddosInterceptor = new DdosGuardInterceptor();
-        const responseText = await ddosInterceptor.fetchWithBypass(`https://animepahe.com/api?m=search&q=${encodedKeyword}`);
+        const responseText = await ddosInterceptor.fetchWithBypass(`${ANIMEPAHE_BASE_URL}/api?m=search&q=${encodedKeyword}`);
         if (responseText.status >= 400) throw new Error("Search HTTP " + responseText.status);
         const dataText = await responseText.text();
         const data = JSON.parse(dataText);
@@ -10,7 +17,7 @@ async function searchResults(keyword) {
             return {
                 title: result.title,
                 image: result.poster,
-                href: `https://animepahe.com/anime/${result.session}`
+                href: `${ANIMEPAHE_BASE_URL}/anime/${result.session}`
             };
         });
 
@@ -59,7 +66,7 @@ async function extractEpisodes(url) {
 
         const ddosInterceptor = new DdosGuardInterceptor();
 
-        const apiUrl1 = `https://animepahe.com/api?m=release&id=${id}&sort=episode_asc&page=1`;
+        const apiUrl1 = `${ANIMEPAHE_BASE_URL}/api?m=release&id=${id}&sort=episode_asc&page=1`;
         const response1 = await ddosInterceptor.fetchWithBypass(apiUrl1);
         if (response1.status >= 400) throw new Error("Episode listing HTTP " + response1.status);
         const dataText1 = await response1.text();
@@ -67,7 +74,7 @@ async function extractEpisodes(url) {
 
         for (const item of data1.data) {
             results.push({
-                href: `https://animepahe.com/play/${id}/${item.session}`,
+                href: `${ANIMEPAHE_BASE_URL}/play/${id}/${item.session}`,
                 number: item.episode
             });
         }
@@ -77,7 +84,7 @@ async function extractEpisodes(url) {
         for (let start = 2; start <= lastPage; start += batchSize) {
             const requests = [];
             for (let p = start; p <= Math.min(lastPage, start + batchSize - 1); p++) {
-                const apiUrl = `https://animepahe.com/api?m=release&id=${id}&sort=episode_asc&page=${p}`;
+                const apiUrl = `${ANIMEPAHE_BASE_URL}/api?m=release&id=${id}&sort=episode_asc&page=${p}`;
                 requests.push(ddosInterceptor.fetchWithBypass(apiUrl).then(response => {
                     if (response.status >= 400) throw new Error("Episode listing HTTP " + response.status);
                     return response.text();
@@ -87,7 +94,7 @@ async function extractEpisodes(url) {
             for (const pageData of pages) {
                 for (const item of pageData.data) {
                     results.push({
-                        href: `https://animepahe.com/play/${id}/${item.session}`,
+                        href: `${ANIMEPAHE_BASE_URL}/play/${id}/${item.session}`,
                         number: item.episode
                     });
                 }
@@ -288,6 +295,7 @@ class DdosGuardInterceptor {
     }
 
     async fetchWithBypass(url, options = {}) {
+        url = canonicalAnimepaheUrl(url);
         const response = await this.fetchWithCookies(url, options);
         const body = await response.text();
         response.text = async () => body;
@@ -319,7 +327,9 @@ class DdosGuardInterceptor {
             options.method || "GET",
             options.body || null
         );
-        console.log("[Animepahe] HTTP " + response.status + " " + url.split("?")[0]);
+        const finalUrl = typeof response.url === "string" ? response.url : url;
+        console.log("[Animepahe] Paul 1.0.8 HTTP " + response.status + " " + url.split("?")[0] +
+            (finalUrl !== url ? " -> " + finalUrl.split("?")[0] : ""));
 
         try {
             const setCookieHeader = response.headers ? response.headers["Set-Cookie"] || response.headers["set-cookie"] : null;
@@ -343,9 +353,11 @@ class DdosGuardInterceptor {
         cookies.forEach(cookieHeader => {
             const parts = cookieHeader.split(";");
             if (parts.length > 0) {
-                const [key, value] = parts[0].split("=");
-                if (key) {
-                    this.cookieStore[key.trim()] = value?.trim() || "";
+                const separator = parts[0].indexOf("=");
+                const key = parts[0].slice(0, separator).trim();
+                // Shirox owns the matching clearance jar and solving User-Agent.
+                if (separator > 0 && key && !/^(?:cf_|__cf)/i.test(key)) {
+                    this.cookieStore[key] = parts[0].slice(separator + 1).trim();
                 }
             }
         });
