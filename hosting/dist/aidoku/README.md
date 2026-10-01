@@ -6,7 +6,7 @@ Install the source list in Aidoku:
 
 Current packages:
 
-- Anna's Archive v17 (performance candidate): `https://raw.githubusercontent.com/hk-0nl/host/main/hosting/dist/aidoku/sources/en.annasarchive-v17.aix`
+- Anna's Archive v18 (session/cache candidate): `https://raw.githubusercontent.com/hk-0nl/host/main/hosting/dist/aidoku/sources/en.annasarchive-v18.aix`
 - Comix v54 (device verification): `https://raw.githubusercontent.com/hk-0nl/host/main/hosting/dist/aidoku/sources/en.comix-v54.aix`
 - Madokami v2: `https://raw.githubusercontent.com/hk-0nl/host/main/hosting/dist/aidoku/sources/en.madokami-v2.aix`
 - NovelUpdates v21: `https://raw.githubusercontent.com/hk-0nl/host/main/hosting/dist/aidoku/sources/en.novelupdates-v21.aix`
@@ -30,12 +30,17 @@ Anna's Archive defaults to `annas-archive.gl`. Change the source settings to use
 Comix v54 fixes secure API installer discovery used by listings and chapters.
 The direct title HTTP smoke, WASM tests, release build, and package checks pass;
 signed requests still require on-device confirmation. v53 is retained for rollback.
-Anna's Archive v17 preserves the user-confirmed working v16 free-search and
-verification path. Page polling uses one structured WebView snapshot rather than
-multiple bridge calls and repeated full-markup serialization. Its 90-second
-search cache holds eight results so Home's four listings do not immediately
-evict recent queries. First-load network speed and multiple-language requests
-remain provider-dependent. v16 and v6 are retained for rollback.
+Anna's Archive v18 makes verification callbacks idempotent: incomplete checks
+cannot overwrite a verified snapshot, repeated checks do not replace the browser,
+and verification does not discard result caches. Cache retention defaults to
+15 minutes, with Off/90 seconds/1 hour alternatives and a separate Clear Cached
+Results button that preserves cookies and does not trigger automatic refreshes.
+URL matching accepts equivalent encoding and omitted empty/default parameters,
+but rejects different queries/filters and stale search results on Home. Previous
+documents are ignored while a fresh navigation begins; a delayed completed page
+can be consumed on retry without another load. The v18 cache starts cold once;
+provider session lifetime, cold network speed and device behavior still require
+verification. v17, v16 and v6 remain available for rollback.
 
 OPDS Catalog v6 supports OPDS 1.x/2.x navigation, facets, ordered publication
 resources, an editable list of feed roots, bounded Combined browsing, optional
