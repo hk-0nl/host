@@ -6,7 +6,7 @@ Install the source list in Aidoku:
 
 Current packages:
 
-- Anna's Archive v15 (device verification): `https://raw.githubusercontent.com/hk-0nl/host/main/hosting/dist/aidoku/sources/en.annasarchive-v15.aix`
+- Anna's Archive v16 (device verification): `https://raw.githubusercontent.com/hk-0nl/host/main/hosting/dist/aidoku/sources/en.annasarchive-v16.aix`
 - Comix v54 (device verification): `https://raw.githubusercontent.com/hk-0nl/host/main/hosting/dist/aidoku/sources/en.comix-v54.aix`
 - Madokami v2: `https://raw.githubusercontent.com/hk-0nl/host/main/hosting/dist/aidoku/sources/en.madokami-v2.aix`
 - NovelUpdates v21: `https://raw.githubusercontent.com/hk-0nl/host/main/hosting/dist/aidoku/sources/en.novelupdates-v21.aix`
@@ -30,9 +30,9 @@ Anna's Archive defaults to `annas-archive.gl`. Change the source settings to use
 Comix v54 fixes secure API installer discovery used by listings and chapters.
 The direct title HTTP smoke, WASM tests, release build, and package checks pass;
 signed requests still require on-device confirmation. v53 is retained for rollback.
-Anna's Archive v15 opens an actual search URL for its separate search verification
-and only marks either verification complete after its clearance cookies arrive.
-Search/session behavior still requires on-device confirmation; v14 is retained.
+Anna's Archive v16 restores v6's free-search request headers and result fallback
+while retaining search/Home URL isolation. Search/session behavior still requires
+on-device confirmation; v6 and v15 are retained for rollback.
 
 OPDS Catalog v6 supports OPDS 1.x/2.x navigation, facets, ordered publication
 resources, an editable list of feed roots, bounded Combined browsing, optional

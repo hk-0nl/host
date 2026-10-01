@@ -286,12 +286,27 @@ class DdosGuardInterceptor {
     }
 
     async fetchWithBypass(url, options = {}) {
+        const response = await this.fetchWithCookies(url, options);
+        const body = await response.text();
+        response.text = async () => body;
+        const blocked = /ddos-guard\/js-challenge|DDoS-Guard|data-ddg-origin/i.test(body);
+        if (!blocked || response.status === 429) return response;
+
+        // Only retry once, and only after receiving a new provider clearance cookie.
+        const previousCookie = this.cookieStore["__ddg2_"];
+        if (!this.recoveryPromise) {
+            this.recoveryPromise = this.getNewCookie(url).finally(() => {
+                this.recoveryPromise = null;
+            });
+        }
+        const newCookie = await this.recoveryPromise;
+        if (!newCookie || newCookie === previousCookie) return response;
         return this.fetchWithCookies(url, options);
     }
 
     async fetchWithCookies(url, options) {
         const cookieHeader = this.getCookieHeader();
-        const headers = options.headers || {};
+        const headers = { ...options.headers };
         if (cookieHeader) {
             headers.Cookie = cookieHeader;
         }
@@ -300,8 +315,7 @@ class DdosGuardInterceptor {
             url,
             headers,
             options.method || "GET",
-            options.body || null,
-            { engine: "webview" }
+            options.body || null
         );
 
         try {
@@ -362,9 +376,8 @@ class DdosGuardInterceptor {
 
             const localUrl = `${baseUrl}${localPath}`;
 
-            const localResponse = await fetchv2(localUrl, {
+            const localResponse = await this.fetchWithCookies(localUrl, {
                 headers: {
-                    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36',
                     'Accept': 'image/avif,image/webp,image/apng,image/svg+xml,image/*,*/*;q=0.8',
                     'Referer': targetUrl
                 }
@@ -382,21 +395,10 @@ class DdosGuardInterceptor {
             if (checkPaths && checkPaths.length > 0) {
                 const checkUrl = checkPaths[0].replace(/['"]/g, '');
 
-                const checkResponse = await fetchv2(checkUrl, {
-                    headers: {
-                        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36',
-                        'Accept': 'image/avif,image/webp,image/apng,image/svg+xml,image/*,*/*;q=0.8',
-                        'Referer': targetUrl
-                    }
+                await fetchv2(checkUrl, {
+                    'Accept': 'image/avif,image/webp,image/apng,image/svg+xml,image/*,*/*;q=0.8',
+                    'Referer': targetUrl
                 });
-
-                try {
-                    setCookie = checkResponse.headers ? checkResponse.headers["set-cookie"] || checkResponse.headers["Set-Cookie"] : null;
-                } catch (e) {
-                }
-                if (setCookie) {
-                    this.storeCookies(setCookie);
-                }
             }
 
             if (this.cookieStore["__ddg2_"]) {
