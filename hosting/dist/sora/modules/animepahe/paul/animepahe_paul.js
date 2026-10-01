@@ -3,8 +3,8 @@ async function searchResults(keyword) {
         const encodedKeyword = encodeURIComponent(keyword);
         const ddosInterceptor = new DdosGuardInterceptor();
         const responseText = await ddosInterceptor.fetchWithBypass(`https://animepahe.com/api?m=search&q=${encodedKeyword}`);
+        if (responseText.status >= 400) throw new Error("Search HTTP " + responseText.status);
         const dataText = await responseText.text();
-        console.log(dataText);
         const data = JSON.parse(dataText);
         const transformedResults = data.data.map(result => {
             return {
@@ -17,7 +17,7 @@ async function searchResults(keyword) {
         return JSON.stringify(transformedResults);
     } catch (error) {
         console.log("Fetch error in searchResults: " + error);
-        return JSON.stringify([{ title: "Error", image: "", href: "" }]);
+        return JSON.stringify([]);
     }
 }
 
@@ -61,6 +61,7 @@ async function extractEpisodes(url) {
 
         const apiUrl1 = `https://animepahe.com/api?m=release&id=${id}&sort=episode_asc&page=1`;
         const response1 = await ddosInterceptor.fetchWithBypass(apiUrl1);
+        if (response1.status >= 400) throw new Error("Episode listing HTTP " + response1.status);
         const dataText1 = await response1.text();
         const data1 = JSON.parse(dataText1);
 
@@ -77,7 +78,10 @@ async function extractEpisodes(url) {
             const requests = [];
             for (let p = start; p <= Math.min(lastPage, start + batchSize - 1); p++) {
                 const apiUrl = `https://animepahe.com/api?m=release&id=${id}&sort=episode_asc&page=${p}`;
-                requests.push(ddosInterceptor.fetchWithBypass(apiUrl).then(response => response.text()).then(JSON.parse));
+                requests.push(ddosInterceptor.fetchWithBypass(apiUrl).then(response => {
+                    if (response.status >= 400) throw new Error("Episode listing HTTP " + response.status);
+                    return response.text();
+                }).then(JSON.parse));
             }
             const pages = await Promise.all(requests);
             for (const pageData of pages) {
@@ -92,10 +96,8 @@ async function extractEpisodes(url) {
 
         return JSON.stringify(results);
     } catch (err) {
-        return JSON.stringify([{
-            href: "Error",
-            number: "Error"
-        }]);
+        console.log("[Animepahe] Episode listing failed: " + err);
+        return JSON.stringify([]);
     }
 }
 
@@ -317,6 +319,7 @@ class DdosGuardInterceptor {
             options.method || "GET",
             options.body || null
         );
+        console.log("[Animepahe] HTTP " + response.status + " " + url.split("?")[0]);
 
         try {
             const setCookieHeader = response.headers ? response.headers["Set-Cookie"] || response.headers["set-cookie"] : null;
