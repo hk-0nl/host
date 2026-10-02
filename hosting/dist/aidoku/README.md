@@ -6,7 +6,7 @@ Install the source list in Aidoku:
 
 Current packages:
 
-- K Manga v3 (home banners; account/device verification): `https://raw.githubusercontent.com/hk-0nl/host/main/hosting/dist/aidoku/sources/en.kmanga-v3.aix`
+- K Manga v4 (settings compatibility; account/device verification): `https://raw.githubusercontent.com/hk-0nl/host/main/hosting/dist/aidoku/sources/en.kmanga-v4.aix`
 - Anna's Archive v18 (session/cache candidate): `https://raw.githubusercontent.com/hk-0nl/host/main/hosting/dist/aidoku/sources/en.annasarchive-v18.aix`
 - Comix v54 (device verification): `https://raw.githubusercontent.com/hk-0nl/host/main/hosting/dist/aidoku/sources/en.comix-v54.aix`
 - Madokami v2: `https://raw.githubusercontent.com/hk-0nl/host/main/hosting/dist/aidoku/sources/en.madokami-v2.aix`
@@ -28,7 +28,14 @@ Current packages:
 
 Anna's Archive defaults to `annas-archive.gl`. Change the source settings to use `.li`, `.org`, `.se`, or a custom reachable mirror.
 
-K Manga v3 adds the official Home promotional banners as a wide native carousel,
+K Manga v4 moves the account/unlock browser controls into packaged settings and
+removes dynamic settings loading to avoid the reported settings-screen error.
+Read / Unlock on K Manga opens the provider home page; select the title there.
+It no longer selects the last-opened title automatically. Existing account,
+session, lock and clear controls remain. Device confirmation is still needed.
+V3 is retained for rollback.
+
+The v3 Home promotional banners remain as a wide native carousel,
 preserving provider artwork and order with five-second auto-scroll. Title
 promotions open in Aidoku; chapter, campaign and help links keep their original
 web destinations. Missing banners do not block the remaining Home sections.
@@ -39,13 +46,13 @@ endpoint, bound to the active sign-in token. Public discovery no longer needs a
 captured account ID. It adds native chapter locks, point-cost labels, live
 genre/collection and publication filters, author/tag navigation, recommendations,
 weekly schedule, Purchased Titles and Reading History tabs, and update metadata.
-Source Settings offers Read / Unlock Last Opened Title and Account & Points
+Source Settings offers Read / Unlock on K Manga and Account & Points
 provider browsers. Confirm any point spending or ticket use on K Manga, close
 with Done, then refresh the title in Aidoku. The source does not automatically
 purchase, redeem tickets, or override region/age/entitlement restrictions.
 Web and app purchased-point balances may differ. Account login, library lists
 and newly unlocked reading still require device verification; no paid action
-was performed during testing. Twenty-eight deterministic and four live public
+was performed during testing. Twenty-nine deterministic and four live public
 tests pass. No custom app build is needed; minimum Aidoku version is 0.8.4.
 
 Comix v54 fixes secure API installer discovery used by listings and chapters.
