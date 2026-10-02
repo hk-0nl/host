@@ -6,6 +6,7 @@ Install the source list in Aidoku:
 
 Current packages:
 
+- K Manga v2 (account/device verification): `https://raw.githubusercontent.com/hk-0nl/host/main/hosting/dist/aidoku/sources/en.kmanga-v2.aix`
 - Anna's Archive v18 (session/cache candidate): `https://raw.githubusercontent.com/hk-0nl/host/main/hosting/dist/aidoku/sources/en.annasarchive-v18.aix`
 - Comix v54 (device verification): `https://raw.githubusercontent.com/hk-0nl/host/main/hosting/dist/aidoku/sources/en.comix-v54.aix`
 - Madokami v2: `https://raw.githubusercontent.com/hk-0nl/host/main/hosting/dist/aidoku/sources/en.madokami-v2.aix`
@@ -26,6 +27,20 @@ Current packages:
 - Danbooru v23: `https://raw.githubusercontent.com/hk-0nl/host/main/hosting/dist/aidoku/sources/multi.danbooru-v23.aix`
 
 Anna's Archive defaults to `annas-archive.gl`. Change the source settings to use `.li`, `.org`, `.se`, or a custom reachable mirror.
+
+K Manga v2 replaces ticket-history identity capture with the provider account
+endpoint, bound to the active sign-in token. Public discovery no longer needs a
+captured account ID. It adds native chapter locks, point-cost labels, live
+genre/collection and publication filters, author/tag navigation, recommendations,
+weekly schedule, Purchased Titles and Reading History tabs, and update metadata.
+Source Settings offers Read / Unlock Last Opened Title and Account & Points
+provider browsers. Confirm any point spending or ticket use on K Manga, close
+with Done, then refresh the title in Aidoku. The source does not automatically
+purchase, redeem tickets, or override region/age/entitlement restrictions.
+Web and app purchased-point balances may differ. Account login, library lists
+and newly unlocked reading still require device verification; no paid action
+was performed during testing. Twenty-five deterministic and three live public
+tests pass. No custom app build is needed; minimum Aidoku version is 0.8.4.
 
 Comix v54 fixes secure API installer discovery used by listings and chapters.
 The direct title HTTP smoke, WASM tests, release build, and package checks pass;
