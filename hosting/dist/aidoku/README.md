@@ -6,6 +6,7 @@ Install the source list in Aidoku:
 
 Current packages:
 
+- Internet Archive v1 (public catalog; device verification pending): `https://raw.githubusercontent.com/hk-0nl/host/main/hosting/dist/aidoku/sources/multi.internetarchive-v1.aix`
 - K Manga v4 (settings compatibility; account/device verification): `https://raw.githubusercontent.com/hk-0nl/host/main/hosting/dist/aidoku/sources/en.kmanga-v4.aix`
 - Anna's Archive v18 (session/cache candidate): `https://raw.githubusercontent.com/hk-0nl/host/main/hosting/dist/aidoku/sources/en.annasarchive-v18.aix`
 - Comix v54 (device verification): `https://raw.githubusercontent.com/hk-0nl/host/main/hosting/dist/aidoku/sources/en.comix-v54.aix`
@@ -27,6 +28,13 @@ Current packages:
 - Danbooru v23: `https://raw.githubusercontent.com/hk-0nl/host/main/hosting/dist/aidoku/sources/multi.danbooru-v23.aix`
 
 Anna's Archive defaults to `annas-archive.gl`. Change the source settings to use `.li`, `.org`, `.se`, or a custom reachable mirror.
+
+Internet Archive v1 adds cross-media discovery, seven listings, ten filters,
+collection navigation, metadata and file inventories. Public image files and
+bounded OCR/plain text can be read directly. Restricted items retain native
+locks; PDF/EPUB, scanned BookReader pages, audio and video use provider/file
+handoffs rather than native decoding. Eighteen tests and package checks pass;
+stock Aidoku device testing remains pending. No app rebuild is needed.
 
 K Manga v4 moves the account/unlock browser controls into packaged settings and
 removes dynamic settings loading to avoid the reported settings-screen error.

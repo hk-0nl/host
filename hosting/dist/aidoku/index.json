@@ -334,6 +334,19 @@
       "contentRating": 1,
       "baseURL": "https://kmanga.kodansha.com",
       "minAppVersion": "0.8.4"
+    },
+    {
+      "id": "multi.internetarchive",
+      "name": "Internet Archive",
+      "version": 1,
+      "iconURL": "icons/multi.internetarchive-v1.png",
+      "downloadURL": "sources/multi.internetarchive-v1.aix",
+      "languages": [
+        "multi"
+      ],
+      "contentRating": 1,
+      "baseURL": "https://archive.org",
+      "minAppVersion": "0.8.4"
     }
   ]
 }
