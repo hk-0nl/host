@@ -6,7 +6,7 @@ Install the source list in Aidoku:
 
 Current packages:
 
-- VNDB v2 (companion sequence fix and read-only account lists): `https://raw.githubusercontent.com/hk-0nl/host/main/hosting/dist/aidoku/sources/multi.vndb-v2.aix`
+- VNDB v3 (permission-gated list editor and account lists): `https://raw.githubusercontent.com/hk-0nl/host/main/hosting/dist/aidoku/sources/multi.vndb-v3.aix`
 - Internet Archive v2 (discovery transport fix; device verification pending): `https://raw.githubusercontent.com/hk-0nl/host/main/hosting/dist/aidoku/sources/multi.internetarchive-v2.aix`
 - K Manga v4 (settings compatibility; account/device verification): `https://raw.githubusercontent.com/hk-0nl/host/main/hosting/dist/aidoku/sources/en.kmanga-v4.aix`
 - Anna's Archive v18 (session/cache candidate): `https://raw.githubusercontent.com/hk-0nl/host/main/hosting/dist/aidoku/sources/en.annasarchive-v18.aix`
@@ -46,10 +46,17 @@ four list sorts, ratings/dates/notes and a My List Entry companion. For private
 lists use your username/u ID and a revocable listread API token in the native
 login Password field, never your VNDB password. Aidoku stores credentials in
 source settings; Clear Token Login stops private access. Public discovery
-remains anonymous. List editing stays on VNDB. Twenty WASM tests (five live),
-Clippy, release transport and package checks pass. V1 catalog is user-accepted;
-v2 real private-token/device verification remains separate. V1 is retained for
-rollback. Refresh entry chapters after updating. No app rebuild; minimum 0.8.4.
+remains anonymous. V3 adds a single-title List Editor in source settings. A token
+with both listread and listwrite enables confirmed add, status, Wishlist, rating,
+notes and removal actions after loading a VN ID. Removal also deletes linked
+release-list entries. Actions recheck permissions/identity and the loaded entry,
+use partial patches, and verify readback. Failed or uncertain writes require a
+reload; browsing/login never writes. Empty account lists can be expected.
+Twenty-five WASM tests (five live public/auth checks), Clippy, both release-WASM
+harnesses and package checks pass. No real account writes were tested; stock
+Aidoku editor/account mutation verification remains separate. V1 and v2 are
+retained for rollback. Refresh entry chapters after updating. No app rebuild;
+minimum 0.8.4.
 Metadata: [VNDB](https://vndb.org/d17); images retain their respective ownership.
 
 Internet Archive v2 fixes the reported UNSUPPORTED_SORT discovery failure by

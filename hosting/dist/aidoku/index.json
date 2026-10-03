@@ -351,9 +351,9 @@
     {
       "id": "multi.vndb",
       "name": "VNDB",
-      "version": 2,
+      "version": 3,
       "iconURL": "icons/multi.vndb-v1.png",
-      "downloadURL": "sources/multi.vndb-v2.aix",
+      "downloadURL": "sources/multi.vndb-v3.aix",
       "languages": [
         "multi"
       ],
