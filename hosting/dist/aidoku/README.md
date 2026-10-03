@@ -6,7 +6,7 @@ Install the source list in Aidoku:
 
 Current packages:
 
-- Kadocomi (ComicWalker) v1 (catalog and official web-viewer handoff; device verification pending): `https://raw.githubusercontent.com/hk-0nl/host/main/hosting/dist/aidoku/sources/ja.kadocomi-v1.aix`
+- Kadocomi (ComicWalker) v2 (Home script-data fix; catalog and official web-viewer handoff; device retest pending): `https://raw.githubusercontent.com/hk-0nl/host/main/hosting/dist/aidoku/sources/ja.kadocomi-v2.aix`
 - VNDB v3 (permission-gated list editor and account lists): `https://raw.githubusercontent.com/hk-0nl/host/main/hosting/dist/aidoku/sources/multi.vndb-v3.aix`
 - Internet Archive v2 (discovery transport fix; device verification pending): `https://raw.githubusercontent.com/hk-0nl/host/main/hosting/dist/aidoku/sources/multi.internetarchive-v2.aix`
 - K Manga v4 (settings compatibility; account/device verification): `https://raw.githubusercontent.com/hk-0nl/host/main/hosting/dist/aidoku/sources/en.kmanga-v4.aix`
@@ -31,14 +31,17 @@ Current packages:
 
 Anna's Archive defaults to `annas-archive.gl`. Change the source settings to use `.li`, `.org`, `.se`, or a custom reachable mirror.
 
-Kadocomi v1 provides Japanese search, popularity/update sorts, provider genre/tag
+Kadocomi v2 provides Japanese search, popularity/update sorts, provider genre/tag
 filters and author/tag navigation, seven discovery listings, label rankings,
 official wide banners/editorial Home sections, metadata and newest-first chapters
-with native unavailable locks. Home uses one public page request. Chapter reading
+with native unavailable locks. Home reads script data from one public page request;
+missing/malformed embedded data falls back to four bounded public API calls.
+Chapter reading
 is an exact link to Kadocomi's official web viewer, not native manga images.
 The source does not fetch/decrypt encoded viewer files, implement native account
-mutations, unlock paid/app-only chapters or make purchases. Account/help links
-remain in static settings. Search accepts one keyword OR one genre/tag/author
+mutations, unlock paid/app-only chapters or make purchases. Website/help links
+remain in static settings; there is no native login, account library or history
+sync. V1 remains available for rollback. Search accepts one keyword OR one genre/tag/author
 scope; daily updates cover the provider's seven-day snapshot. Native author/tag
 taps use public identifiers learned from opened title metadata; ambiguous names
 fail explicitly. Minimum Aidoku 0.8.4, no app rebuild. Text-link interaction depends
