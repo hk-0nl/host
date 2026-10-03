@@ -6,7 +6,7 @@ Install the source list in Aidoku:
 
 Current packages:
 
-- Kadocomi (ComicWalker) v2 (Home script-data fix; catalog and official web-viewer handoff; device retest pending): `https://raw.githubusercontent.com/hk-0nl/host/main/hosting/dist/aidoku/sources/ja.kadocomi-v2.aix`
+- Kadocomi (ComicWalker) v3 (native public web-chapter reader; device verification pending): `https://raw.githubusercontent.com/hk-0nl/host/main/hosting/dist/aidoku/sources/ja.kadocomi-v3.aix`
 - VNDB v3 (permission-gated list editor and account lists): `https://raw.githubusercontent.com/hk-0nl/host/main/hosting/dist/aidoku/sources/multi.vndb-v3.aix`
 - Internet Archive v2 (discovery transport fix; device verification pending): `https://raw.githubusercontent.com/hk-0nl/host/main/hosting/dist/aidoku/sources/multi.internetarchive-v2.aix`
 - K Manga v4 (settings compatibility; account/device verification): `https://raw.githubusercontent.com/hk-0nl/host/main/hosting/dist/aidoku/sources/en.kmanga-v4.aix`
@@ -31,23 +31,27 @@ Current packages:
 
 Anna's Archive defaults to `annas-archive.gl`. Change the source settings to use `.li`, `.org`, `.se`, or a custom reachable mirror.
 
-Kadocomi v2 provides Japanese search, popularity/update sorts, provider genre/tag
+Kadocomi v3 provides Japanese search, popularity/update sorts, provider genre/tag
 filters and author/tag navigation, seven discovery listings, label rankings,
 official wide banners/editorial Home sections, metadata and newest-first chapters
 with native unavailable locks. Home reads script data from one public page request;
 missing/malformed embedded data falls back to four bounded public API calls.
-Chapter reading
-is an exact link to Kadocomi's official web viewer, not native manga images.
-The source does not fetch/decrypt encoded viewer files, implement native account
+Currently active public web/web-trial chapters open as native right-to-left
+pages using the provider's per-page XOR decoding through Aidoku's image hook.
+Fresh availability is checked before requesting each chapter manifest; expired
+images require reopening the chapter. Reading Mode -> Official Website retains
+the exact episode handoff. The source does not implement native account
 mutations, unlock paid/app-only chapters or make purchases. Website/help links
 remain in static settings; there is no native login, account library or history
-sync. V1 remains available for rollback. Search accepts one keyword OR one genre/tag/author
+sync. V1/v2 remain available for rollback. Search accepts one keyword OR one genre/tag/author
 scope; daily updates cover the provider's seven-day snapshot. Native author/tag
 taps use public identifiers learned from opened title metadata; ambiguous names
 fail explicitly. Minimum Aidoku 0.8.4, no app rebuild. Text-link interaction depends
 on reader mode; the chapter website action is the alternative handoff. Automated
-WASM, live public API, package and release-transport checks pass; device acceptance
-remains separate. Public metadata/artwork/icon: KADOKAWA / comic-walker.com.
+WASM, live public API, package and release-transport checks pass. The release-WASM
+decoder produced valid first/middle/last WebP images from a public chapter;
+device rendering, cache, downloads and offline acceptance remain separate.
+Public metadata/artwork/icon: KADOKAWA / comic-walker.com.
 
 VNDB adds nine discovery listings, seventeen filter controls, paginated
 search, native developer/tag navigation, cover/screenshot reading, metadata,
