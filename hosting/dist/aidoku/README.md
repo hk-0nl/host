@@ -6,7 +6,7 @@ Install the source list in Aidoku:
 
 Current packages:
 
-- VNDB v1 (official-API catalog; first device check pending): `https://raw.githubusercontent.com/hk-0nl/host/main/hosting/dist/aidoku/sources/multi.vndb-v1.aix`
+- VNDB v2 (companion sequence fix and read-only account lists): `https://raw.githubusercontent.com/hk-0nl/host/main/hosting/dist/aidoku/sources/multi.vndb-v2.aix`
 - Internet Archive v2 (discovery transport fix; device verification pending): `https://raw.githubusercontent.com/hk-0nl/host/main/hosting/dist/aidoku/sources/multi.internetarchive-v2.aix`
 - K Manga v4 (settings compatibility; account/device verification): `https://raw.githubusercontent.com/hk-0nl/host/main/hosting/dist/aidoku/sources/en.kmanga-v4.aix`
 - Anna's Archive v18 (session/cache candidate): `https://raw.githubusercontent.com/hk-0nl/host/main/hosting/dist/aidoku/sources/en.annasarchive-v18.aix`
@@ -30,7 +30,7 @@ Current packages:
 
 Anna's Archive defaults to `annas-archive.gl`. Change the source settings to use `.li`, `.org`, `.se`, or a custom reachable mirror.
 
-VNDB v1 adds nine discovery listings, seventeen filter controls, paginated
+VNDB adds nine discovery listings, seventeen filter controls, paginated
 search, native developer/tag navigation, cover/screenshot reading, metadata,
 related VNs, staff and bounded release/character text companions. It uses the
 official Kana API, JSON POST and one small Home feed. Graphic images and
@@ -39,10 +39,17 @@ BBCode is rendered literally, with spoiler descriptions withheld by default.
 Text companion links depend on Aidoku reader mode; the entry's website is the
 browser handoff. Release/character companions show at most 100 records and link
 to the full provider listing. This is catalog-only: no game execution, game
-downloads, account access or automatic purchases. A freeware match means at
-least one freeware release, not that every release is free. Twelve WASM tests
-(three live), Clippy, release transport and package checks pass. First stock
-Aidoku checks remain pending. No app rebuild is needed; minimum version 0.8.4.
+downloads or automatic purchases. A freeware match means at least one freeware
+release, not that every release is free. V2 fixes companion chapter sequence
+and adds optional read-only public-profile/token lists, eight account tabs,
+four list sorts, ratings/dates/notes and a My List Entry companion. For private
+lists use your username/u ID and a revocable listread API token in the native
+login Password field, never your VNDB password. Aidoku stores credentials in
+source settings; Clear Token Login stops private access. Public discovery
+remains anonymous. List editing stays on VNDB. Twenty WASM tests (five live),
+Clippy, release transport and package checks pass. V1 catalog is user-accepted;
+v2 real private-token/device verification remains separate. V1 is retained for
+rollback. Refresh entry chapters after updating. No app rebuild; minimum 0.8.4.
 Metadata: [VNDB](https://vndb.org/d17); images retain their respective ownership.
 
 Internet Archive v2 fixes the reported UNSUPPORTED_SORT discovery failure by
