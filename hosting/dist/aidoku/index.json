@@ -338,9 +338,9 @@
     {
       "id": "multi.internetarchive",
       "name": "Internet Archive",
-      "version": 1,
+      "version": 2,
       "iconURL": "icons/multi.internetarchive-v1.png",
-      "downloadURL": "sources/multi.internetarchive-v1.aix",
+      "downloadURL": "sources/multi.internetarchive-v2.aix",
       "languages": [
         "multi"
       ],

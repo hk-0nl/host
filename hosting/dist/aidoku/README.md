@@ -6,7 +6,7 @@ Install the source list in Aidoku:
 
 Current packages:
 
-- Internet Archive v1 (public catalog; device verification pending): `https://raw.githubusercontent.com/hk-0nl/host/main/hosting/dist/aidoku/sources/multi.internetarchive-v1.aix`
+- Internet Archive v2 (discovery transport fix; device verification pending): `https://raw.githubusercontent.com/hk-0nl/host/main/hosting/dist/aidoku/sources/multi.internetarchive-v2.aix`
 - K Manga v4 (settings compatibility; account/device verification): `https://raw.githubusercontent.com/hk-0nl/host/main/hosting/dist/aidoku/sources/en.kmanga-v4.aix`
 - Anna's Archive v18 (session/cache candidate): `https://raw.githubusercontent.com/hk-0nl/host/main/hosting/dist/aidoku/sources/en.annasarchive-v18.aix`
 - Comix v54 (device verification): `https://raw.githubusercontent.com/hk-0nl/host/main/hosting/dist/aidoku/sources/en.comix-v54.aix`
@@ -29,11 +29,15 @@ Current packages:
 
 Anna's Archive defaults to `annas-archive.gl`. Change the source settings to use `.li`, `.org`, `.se`, or a custom reachable mirror.
 
-Internet Archive v1 adds cross-media discovery, seven listings, ten filters,
+Internet Archive v2 fixes the reported UNSUPPORTED_SORT discovery failure by
+sending Advanced Search fields in a form POST body, not an encoded URL query.
+The packaged Home request is verified to emit POST with a query-free URL;
+twenty WASM tests, including five live checks, and package validation pass.
+V1 is retained for rollback. The existing source adds cross-media discovery, seven listings, ten filters,
 collection navigation, metadata and file inventories. Public image files and
 bounded OCR/plain text can be read directly. Restricted items retain native
 locks; PDF/EPUB, scanned BookReader pages, audio and video use provider/file
-handoffs rather than native decoding. Eighteen tests and package checks pass;
+handoffs rather than native decoding. Tests and package checks pass;
 stock Aidoku device testing remains pending. No app rebuild is needed.
 
 K Manga v4 moves the account/unlock browser controls into packaged settings and
