@@ -360,6 +360,19 @@
       "contentRating": 2,
       "baseURL": "https://vndb.org",
       "minAppVersion": "0.8.4"
+    },
+    {
+      "id": "ja.kadocomi",
+      "name": "Kadocomi (ComicWalker)",
+      "version": 1,
+      "iconURL": "icons/ja.kadocomi-v1.png",
+      "downloadURL": "sources/ja.kadocomi-v1.aix",
+      "languages": [
+        "ja"
+      ],
+      "contentRating": 1,
+      "baseURL": "https://comic-walker.com",
+      "minAppVersion": "0.8.4"
     }
   ]
 }
