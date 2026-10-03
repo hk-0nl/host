@@ -364,9 +364,9 @@
     {
       "id": "ja.kadocomi",
       "name": "Kadocomi (ComicWalker)",
-      "version": 3,
+      "version": 4,
       "iconURL": "icons/ja.kadocomi-v1.png",
-      "downloadURL": "sources/ja.kadocomi-v3.aix",
+      "downloadURL": "sources/ja.kadocomi-v4.aix",
       "languages": [
         "ja"
       ],
