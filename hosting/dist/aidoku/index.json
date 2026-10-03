@@ -347,6 +347,19 @@
       "contentRating": 1,
       "baseURL": "https://archive.org",
       "minAppVersion": "0.8.4"
+    },
+    {
+      "id": "multi.vndb",
+      "name": "VNDB",
+      "version": 1,
+      "iconURL": "icons/multi.vndb-v1.png",
+      "downloadURL": "sources/multi.vndb-v1.aix",
+      "languages": [
+        "multi"
+      ],
+      "contentRating": 2,
+      "baseURL": "https://vndb.org",
+      "minAppVersion": "0.8.4"
     }
   ]
 }

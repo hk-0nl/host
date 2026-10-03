@@ -6,6 +6,7 @@ Install the source list in Aidoku:
 
 Current packages:
 
+- VNDB v1 (official-API catalog; first device check pending): `https://raw.githubusercontent.com/hk-0nl/host/main/hosting/dist/aidoku/sources/multi.vndb-v1.aix`
 - Internet Archive v2 (discovery transport fix; device verification pending): `https://raw.githubusercontent.com/hk-0nl/host/main/hosting/dist/aidoku/sources/multi.internetarchive-v2.aix`
 - K Manga v4 (settings compatibility; account/device verification): `https://raw.githubusercontent.com/hk-0nl/host/main/hosting/dist/aidoku/sources/en.kmanga-v4.aix`
 - Anna's Archive v18 (session/cache candidate): `https://raw.githubusercontent.com/hk-0nl/host/main/hosting/dist/aidoku/sources/en.annasarchive-v18.aix`
@@ -28,6 +29,21 @@ Current packages:
 - Danbooru v23: `https://raw.githubusercontent.com/hk-0nl/host/main/hosting/dist/aidoku/sources/multi.danbooru-v23.aix`
 
 Anna's Archive defaults to `annas-archive.gl`. Change the source settings to use `.li`, `.org`, `.se`, or a custom reachable mirror.
+
+VNDB v1 adds nine discovery listings, seventeen filter controls, paginated
+search, native developer/tag navigation, cover/screenshot reading, metadata,
+related VNs, staff and bounded release/character text companions. It uses the
+official Kana API, JSON POST and one small Home feed. Graphic images and
+spoilers are disabled by default; unknown image ratings are hidden. Provider
+BBCode is rendered literally, with spoiler descriptions withheld by default.
+Text companion links depend on Aidoku reader mode; the entry's website is the
+browser handoff. Release/character companions show at most 100 records and link
+to the full provider listing. This is catalog-only: no game execution, game
+downloads, account access or automatic purchases. A freeware match means at
+least one freeware release, not that every release is free. Twelve WASM tests
+(three live), Clippy, release transport and package checks pass. First stock
+Aidoku checks remain pending. No app rebuild is needed; minimum version 0.8.4.
+Metadata: [VNDB](https://vndb.org/d17); images retain their respective ownership.
 
 Internet Archive v2 fixes the reported UNSUPPORTED_SORT discovery failure by
 sending Advanced Search fields in a form POST body, not an encoded URL query.
