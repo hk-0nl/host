@@ -386,6 +386,19 @@
       "contentRating": 1,
       "baseURL": "https://bookwalker.com",
       "minAppVersion": "0.8.4"
+    },
+    {
+      "id": "ja.ebookjapan",
+      "name": "EbookJapan (Samples)",
+      "version": 1,
+      "iconURL": "icons/ja.ebookjapan-v1.png",
+      "downloadURL": "sources/ja.ebookjapan-v1.aix",
+      "languages": [
+        "ja"
+      ],
+      "contentRating": 1,
+      "baseURL": "https://ebookjapan.yahoo.co.jp",
+      "minAppVersion": "0.8.4"
     }
   ]
 }
