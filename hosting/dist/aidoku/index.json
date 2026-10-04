@@ -373,6 +373,19 @@
       "contentRating": 1,
       "baseURL": "https://comic-walker.com",
       "minAppVersion": "0.8.4"
+    },
+    {
+      "id": "en.bookwalker",
+      "name": "BookWalker (Samples)",
+      "version": 1,
+      "iconURL": "icons/en.bookwalker-v1.png",
+      "downloadURL": "sources/en.bookwalker-v1.aix",
+      "languages": [
+        "en"
+      ],
+      "contentRating": 1,
+      "baseURL": "https://bookwalker.com",
+      "minAppVersion": "0.8.4"
     }
   ]
 }

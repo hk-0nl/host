@@ -6,6 +6,7 @@ Install the source list in Aidoku:
 
 Current packages:
 
+- BookWalker (Samples) v1 (test release; native device reading pending): `https://raw.githubusercontent.com/hk-0nl/host/main/hosting/dist/aidoku/sources/en.bookwalker-v1.aix`
 - Kadocomi (ComicWalker) v3 (native public web-chapter reader; device verification pending): `https://raw.githubusercontent.com/hk-0nl/host/main/hosting/dist/aidoku/sources/ja.kadocomi-v3.aix`
 - VNDB v3 (permission-gated list editor and account lists): `https://raw.githubusercontent.com/hk-0nl/host/main/hosting/dist/aidoku/sources/multi.vndb-v3.aix`
 - Internet Archive v2 (discovery transport fix; device verification pending): `https://raw.githubusercontent.com/hk-0nl/host/main/hosting/dist/aidoku/sources/multi.internetarchive-v2.aix`
@@ -30,6 +31,18 @@ Current packages:
 - Danbooru v23: `https://raw.githubusercontent.com/hk-0nl/host/main/hosting/dist/aidoku/sources/multi.danbooru-v23.aix`
 
 Anna's Archive defaults to `annas-archive.gl`. Change the source settings to use `.li`, `.org`, `.se`, or a custom reachable mirror.
+
+BookWalker (Samples) v1 is a test release for official unencrypted manga previews.
+It provides Popular, New and Recently Updated Home sections, paged search,
+provider sorts, metadata and separate sample chapter rows. Full books remain
+locked, including free books with protected delivery. No account/library,
+purchased-book, novel/audio/webtoon reading, purchases or DRM decoding.
+Minimum Aidoku 0.8.4; no app rebuild. Nine WASM tests, live preview image transport
+and package verification pass; native device rendering/downloads remain pending.
+Test Kaiju No. 8 Vol. 1 (Sample), all 20 pages, then Vol. 2 (Sample), and confirm
+full-book rows show native locks. This source will not remain in the catalog if
+native sample reading proves unworkable.
+Public metadata/artwork/icon: BookWalker and their respective rights holders.
 
 Kadocomi v3 provides Japanese search, popularity/update sorts, provider genre/tag
 filters and author/tag navigation, seven discovery listings, label rankings,
