@@ -6,7 +6,7 @@ Install the source list in Aidoku:
 
 Current packages:
 
-- BookWalker (Samples) v1 (test release; native device reading pending): `https://raw.githubusercontent.com/hk-0nl/host/main/hosting/dist/aidoku/sources/en.bookwalker-v1.aix`
+- BookWalker (Samples) v2 (missing-cover placeholder fix; device retest): `https://raw.githubusercontent.com/hk-0nl/host/main/hosting/dist/aidoku/sources/en.bookwalker-v2.aix`
 - Kadocomi (ComicWalker) v3 (native public web-chapter reader; device verification pending): `https://raw.githubusercontent.com/hk-0nl/host/main/hosting/dist/aidoku/sources/ja.kadocomi-v3.aix`
 - VNDB v3 (permission-gated list editor and account lists): `https://raw.githubusercontent.com/hk-0nl/host/main/hosting/dist/aidoku/sources/multi.vndb-v3.aix`
 - Internet Archive v2 (discovery transport fix; device verification pending): `https://raw.githubusercontent.com/hk-0nl/host/main/hosting/dist/aidoku/sources/multi.internetarchive-v2.aix`
@@ -32,13 +32,19 @@ Current packages:
 
 Anna's Archive defaults to `annas-archive.gl`. Change the source settings to use `.li`, `.org`, `.se`, or a custom reachable mirror.
 
-BookWalker (Samples) v1 is a test release for official unencrypted manga previews.
+BookWalker (Samples) v2 is a test release for official unencrypted manga previews.
 It provides Popular, New and Recently Updated Home sections, paged search,
 provider sorts, metadata and separate sample chapter rows. Full books remain
 locked, including free books with protected delivery. No account/library,
 purchased-book, novel/audio/webtoon reading, purchases or DRM decoding.
-Minimum Aidoku 0.8.4; no app rebuild. Nine WASM tests, live preview image transport
+Missing provider artwork now uses BookWalker's official PNG icon as a raster
+placeholder instead of blank covers. Real artwork and provider ordering are
+unchanged; no per-title fallback requests. The provider currently uses SVG
+coming-soon placeholders for these titles on its website. V1 is retained for rollback.
+Minimum Aidoku 0.8.4; no app rebuild. Eleven WASM tests, live preview image transport
 and package verification pass; native device rendering/downloads remain pending.
+Live thumbnail checks download all 30 Popular images and refreshed title/chapter
+images through the source image-request hook; PNG/WebP bytes verify.
 Test Kaiju No. 8 Vol. 1 (Sample), all 20 pages, then Vol. 2 (Sample), and confirm
 full-book rows show native locks. This source will not remain in the catalog if
 native sample reading proves unworkable.
