@@ -403,9 +403,9 @@
     {
       "id": "multi.itchio",
       "name": "itch.io (Discovery)",
-      "version": 1,
+      "version": 2,
       "iconURL": "icons/multi.itchio-v1.png",
-      "downloadURL": "sources/multi.itchio-v1.aix",
+      "downloadURL": "sources/multi.itchio-v2.aix",
       "languages": [
         "multi"
       ],
