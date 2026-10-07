@@ -399,6 +399,19 @@
       "contentRating": 1,
       "baseURL": "https://ebookjapan.yahoo.co.jp",
       "minAppVersion": "0.8.4"
+    },
+    {
+      "id": "multi.itchio",
+      "name": "itch.io (Discovery)",
+      "version": 1,
+      "iconURL": "icons/multi.itchio-v1.png",
+      "downloadURL": "sources/multi.itchio-v1.aix",
+      "languages": [
+        "multi"
+      ],
+      "contentRating": 2,
+      "baseURL": "https://itch.io",
+      "minAppVersion": "0.8.4"
     }
   ]
 }
