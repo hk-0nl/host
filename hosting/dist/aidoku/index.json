@@ -437,9 +437,9 @@
     {
       "id": "multi.e621",
       "name": "e621",
-      "version": 2,
+      "version": 3,
       "iconURL": "icons/multi.e621-v1.png",
-      "downloadURL": "sources/multi.e621-v2.aix",
+      "downloadURL": "sources/multi.e621-v3.aix",
       "languages": [
         "en"
       ],
