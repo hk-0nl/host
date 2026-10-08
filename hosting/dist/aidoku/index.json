@@ -412,6 +412,27 @@
       "contentRating": 2,
       "baseURL": "https://itch.io",
       "minAppVersion": "0.8.4"
+    },
+    {
+      "id": "multi.mangaplus",
+      "name": "MANGA Plus",
+      "version": 7,
+      "iconURL": "icons/multi.mangaplus-v7.png",
+      "downloadURL": "sources/multi.mangaplus-v7.aix",
+      "languages": [
+        "en",
+        "es",
+        "fr",
+        "id",
+        "pt-BR",
+        "ru",
+        "th",
+        "vi",
+        "de"
+      ],
+      "contentRating": 0,
+      "baseURL": "https://mangaplus.shueisha.co.jp",
+      "minAppVersion": "0.7.2"
     }
   ]
 }
