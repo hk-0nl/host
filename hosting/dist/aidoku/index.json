@@ -416,9 +416,9 @@
     {
       "id": "multi.mangaplus",
       "name": "MANGA Plus",
-      "version": 7,
+      "version": 8,
       "iconURL": "icons/multi.mangaplus-v7.png",
-      "downloadURL": "sources/multi.mangaplus-v7.aix",
+      "downloadURL": "sources/multi.mangaplus-v8.aix",
       "languages": [
         "en",
         "es",
@@ -437,9 +437,9 @@
     {
       "id": "multi.e621",
       "name": "e621",
-      "version": 1,
+      "version": 2,
       "iconURL": "icons/multi.e621-v1.png",
-      "downloadURL": "sources/multi.e621-v1.aix",
+      "downloadURL": "sources/multi.e621-v2.aix",
       "languages": [
         "en"
       ],
