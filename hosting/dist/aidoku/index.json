@@ -446,6 +446,20 @@
       "contentRating": 2,
       "baseURL": "https://e621.net",
       "minAppVersion": "0.8.4"
+    },
+    {
+      "id": "multi.pixiv",
+      "name": "Pixiv",
+      "version": 1,
+      "iconURL": "icons/multi.pixiv-v1.png",
+      "downloadURL": "sources/multi.pixiv-v1.aix",
+      "languages": [
+        "ja",
+        "en"
+      ],
+      "contentRating": 2,
+      "baseURL": "https://www.pixiv.net",
+      "minAppVersion": "0.8.4"
     }
   ]
 }
