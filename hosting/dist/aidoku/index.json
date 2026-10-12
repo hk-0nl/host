@@ -450,16 +450,16 @@
     {
       "id": "multi.pixiv",
       "name": "Pixiv",
-      "version": 6,
+      "version": 7,
       "iconURL": "icons/multi.pixiv-v1.png",
-      "downloadURL": "sources/multi.pixiv-v6.aix",
+      "downloadURL": "sources/multi.pixiv-v7.aix",
       "languages": [
         "ja",
         "en"
       ],
       "contentRating": 2,
       "baseURL": "https://www.pixiv.net",
-      "minAppVersion": "0.8.4"
+      "minAppVersion": "0.9.0"
     }
   ]
 }
