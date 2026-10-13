@@ -450,9 +450,9 @@
     {
       "id": "multi.pixiv",
       "name": "Pixiv",
-      "version": 14,
+      "version": 15,
       "iconURL": "icons/multi.pixiv-v1.png",
-      "downloadURL": "sources/multi.pixiv-v14.aix",
+      "downloadURL": "sources/multi.pixiv-v15.aix",
       "languages": [
         "ja",
         "en"
