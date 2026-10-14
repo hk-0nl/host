@@ -473,6 +473,19 @@
       "contentRating": 1,
       "baseURL": "https://comic-fuz.com",
       "minAppVersion": "0.9.0"
+    },
+    {
+      "id": "ja.sokuyomi",
+      "name": "Sokuyomi",
+      "version": 1,
+      "iconURL": "icons/ja.sokuyomi-v1.png",
+      "downloadURL": "sources/ja.sokuyomi-v1.aix",
+      "languages": [
+        "ja"
+      ],
+      "contentRating": 1,
+      "baseURL": "https://sokuyomi.jp",
+      "minAppVersion": "0.9.0"
     }
   ]
 }
