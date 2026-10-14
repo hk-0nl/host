@@ -477,9 +477,9 @@
     {
       "id": "ja.sokuyomi",
       "name": "Sokuyomi",
-      "version": 1,
+      "version": 2,
       "iconURL": "icons/ja.sokuyomi-v1.png",
-      "downloadURL": "sources/ja.sokuyomi-v1.aix",
+      "downloadURL": "sources/ja.sokuyomi-v2.aix",
       "languages": [
         "ja"
       ],
