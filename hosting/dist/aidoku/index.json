@@ -486,6 +486,19 @@
       "contentRating": 1,
       "baseURL": "https://sokuyomi.jp",
       "minAppVersion": "0.9.0"
+    },
+    {
+      "id": "multi.coomer",
+      "name": "Coomer (Image Previews)",
+      "version": 1,
+      "iconURL": "icons/multi.coomer-v1.png",
+      "downloadURL": "sources/multi.coomer-v1.aix",
+      "languages": [
+        "multi"
+      ],
+      "contentRating": 2,
+      "baseURL": "https://coomer.st",
+      "minAppVersion": "0.9.0"
     }
   ]
 }
