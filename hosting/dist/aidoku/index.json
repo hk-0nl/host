@@ -464,9 +464,9 @@
     {
       "id": "ja.comicfuz",
       "name": "COMIC FUZ",
-      "version": 2,
+      "version": 3,
       "iconURL": "icons/ja.comicfuz-v1.png",
-      "downloadURL": "sources/ja.comicfuz-v2.aix",
+      "downloadURL": "sources/ja.comicfuz-v3.aix",
       "languages": [
         "ja"
       ],
