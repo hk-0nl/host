@@ -490,9 +490,9 @@
     {
       "id": "multi.coomer",
       "name": "Coomer (Images & Links)",
-      "version": 4,
+      "version": 5,
       "iconURL": "icons/multi.coomer-v1.png",
-      "downloadURL": "sources/multi.coomer-v4.aix",
+      "downloadURL": "sources/multi.coomer-v5.aix",
       "languages": [
         "multi"
       ],
@@ -503,9 +503,9 @@
     {
       "id": "multi.rule34",
       "name": "Rule34 (API Key)",
-      "version": 1,
+      "version": 2,
       "iconURL": "icons/multi.rule34-v1.png",
-      "downloadURL": "sources/multi.rule34-v1.aix",
+      "downloadURL": "sources/multi.rule34-v2.aix",
       "languages": [
         "multi"
       ],
