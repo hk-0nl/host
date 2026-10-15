@@ -499,6 +499,19 @@
       "contentRating": 2,
       "baseURL": "https://coomer.st",
       "minAppVersion": "0.9.0"
+    },
+    {
+      "id": "multi.rule34",
+      "name": "Rule34 (API Key)",
+      "version": 1,
+      "iconURL": "icons/multi.rule34-v1.png",
+      "downloadURL": "sources/multi.rule34-v1.aix",
+      "languages": [
+        "multi"
+      ],
+      "contentRating": 2,
+      "baseURL": "https://rule34.xxx",
+      "minAppVersion": "0.9.0"
     }
   ]
 }
