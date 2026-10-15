@@ -489,10 +489,10 @@
     },
     {
       "id": "multi.coomer",
-      "name": "Coomer (Image Previews)",
-      "version": 1,
+      "name": "Coomer (Images & Links)",
+      "version": 2,
       "iconURL": "icons/multi.coomer-v1.png",
-      "downloadURL": "sources/multi.coomer-v1.aix",
+      "downloadURL": "sources/multi.coomer-v2.aix",
       "languages": [
         "multi"
       ],
