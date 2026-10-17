@@ -503,9 +503,9 @@
     {
       "id": "multi.rule34",
       "name": "Rule34 (API Key)",
-      "version": 8,
+      "version": 9,
       "iconURL": "icons/multi.rule34-v3.png",
-      "downloadURL": "sources/multi.rule34-v8.aix",
+      "downloadURL": "sources/multi.rule34-v9.aix",
       "languages": [
         "multi"
       ],
