@@ -180,9 +180,9 @@
     {
       "id": "multi.hitomi",
       "name": "Hitomi",
-      "version": 3,
+      "version": 4,
       "iconURL": "icons/multi.hitomi-v3.png",
-      "downloadURL": "sources/multi.hitomi-v3.aix",
+      "downloadURL": "sources/multi.hitomi-v4.aix",
       "languages": [
         "All",
         "en",
